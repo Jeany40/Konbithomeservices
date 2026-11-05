@@ -99,6 +99,7 @@
   var form = document.getElementById('estimate-form');
   if (form) {
     var endpoint = form.getAttribute('action');
+    var formTitle = document.getElementById('form-title');
     var sendBtn = document.getElementById('estimate-send');
     var sendLabel = sendBtn.querySelector('.btn-label');
     var live = document.getElementById('form-live');
@@ -111,29 +112,34 @@
     var resultTitle = document.getElementById('result-title');
     var copyBtn = document.getElementById('result-copy');
     var f = {
+      service: document.getElementById('est-service'), // group of choices
+      area: document.getElementById('est-area'),       // group of choices
+      details: document.getElementById('est-details'),
       name: document.getElementById('est-name'),
       phone: document.getElementById('est-phone'),
-      email: document.getElementById('est-email'),
-      area: document.getElementById('est-area'),
-      service: document.getElementById('est-service'),
-      details: document.getElementById('est-details')
+      email: document.getElementById('est-email')
     };
     var sending = false;
 
     // Our own checks and messages replace the browser's, which still apply if scripts are off.
     form.noValidate = true;
 
-    var setError = function (input, msg) {
-      var err = document.getElementById(input.id + '-error');
+    // The chosen answer in a group of choices, or ''.
+    var picked = function (name) {
+      var c = form.querySelector('input[name="' + name + '"]:checked');
+      return c ? c.value : '';
+    };
+    var setError = function (el, msg) {
+      var err = document.getElementById(el.id + '-error');
       if (!err) return;
-      if (msg) {
-        err.textContent = msg;
-        err.hidden = false;
-        input.setAttribute('aria-invalid', 'true');
+      err.textContent = msg || '';
+      err.hidden = !msg;
+      if (el.tagName === 'FIELDSET') {
+        el.classList.toggle('is-invalid', !!msg);
+      } else if (msg) {
+        el.setAttribute('aria-invalid', 'true');
       } else {
-        err.textContent = '';
-        err.hidden = true;
-        input.removeAttribute('aria-invalid');
+        el.removeAttribute('aria-invalid');
       }
     };
     var phoneDigits = function (v) {
@@ -144,24 +150,23 @@
     var prettyPhone = function (d) {
       return '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
     };
-    var contactMethod = function () {
-      var c = form.querySelector('input[name="contact"]:checked');
-      return c ? c.value : 'Call';
-    };
+    var contactMethod = function () { return picked('contact') || 'Call'; };
+    // Checks the questions top to bottom; returns where to put the cursor for the first problem.
     var validate = function () {
       var first = null;
-      var check = function (input, ok, msg) {
-        setError(input, ok ? '' : msg);
-        if (!ok && !first) first = input;
+      var check = function (el, ok, msg) {
+        setError(el, ok ? '' : msg);
+        if (!ok && !first) first = el;
       };
+      check(f.service, !!picked('service'), 'Choose the type of work.');
+      check(f.area, !!picked('area'), 'Choose where the project is.');
       check(f.name, f.name.value.trim().length > 0, 'Enter your name.');
-      check(f.phone, phoneDigits(f.phone.value).length === 10, 'Enter a 10-digit phone number, like (718) 555-0123.');
+      check(f.phone, phoneDigits(f.phone.value).length === 10, 'Enter a 10-digit phone number, like (718) 555-0123.');
       var email = f.email.value.trim();
       var needEmail = contactMethod() === 'Email' && !email;
       var emailOk = !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       check(f.email, emailOk && !needEmail, needEmail ? 'Add your email so we can write back.' : 'Check the email address, or leave it blank.');
-      check(f.area, !!f.area.value, 'Choose where the project is.');
-      check(f.service, !!f.service.value, 'Choose the type of work.');
+      if (first && first.tagName === 'FIELDSET') return first.querySelector('input');
       return first;
     };
     var compose = function () {
@@ -170,8 +175,8 @@
       lines.push('Phone: ' + prettyPhone(phoneDigits(f.phone.value)));
       var email = f.email.value.trim();
       if (email) lines.push('Email: ' + email);
-      lines.push('Project location: ' + f.area.value);
-      lines.push('Type of work: ' + f.service.value);
+      lines.push('Project location: ' + picked('area'));
+      lines.push('Type of work: ' + picked('service'));
       var details = f.details.value.trim();
       if (details) lines.push('', 'Project details:', details);
       lines.push('', 'Best way to reach me: ' + contactMethod());
@@ -197,7 +202,7 @@
       var details = f.details.value.trim();
       var data = {
         access_key: form.elements.access_key.value,
-        subject: 'Estimate request from ' + name + ': ' + f.service.value + ', ' + f.area.value,
+        subject: 'Estimate request from ' + name + ': ' + picked('service') + ', ' + picked('area'),
         from_name: 'Konbit Home Services website',
         'Name': name,
         'Phone': prettyPhone(phoneDigits(f.phone.value))
@@ -206,8 +211,8 @@
         data['Email'] = email;
         data.replyto = email;
       }
-      data['Project location'] = f.area.value;
-      data['Type of work'] = f.service.value;
+      data['Project location'] = picked('area');
+      data['Type of work'] = picked('service');
       if (details) data['Project details'] = details;
       data['Best way to reach them'] = contactMethod();
       return data;
@@ -235,10 +240,16 @@
     // A link like contact.html?service=Tile%20Installation picks that service.
     try {
       var wanted = new URLSearchParams(window.location.search).get('service');
-      if (wanted && Array.prototype.some.call(f.service.options, function (o) { return o.value === wanted; })) {
-        f.service.value = wanted;
-      }
+      Array.prototype.forEach.call(form.querySelectorAll('input[name="service"]'), function (r) {
+        if (r.value === wanted) r.checked = true;
+      });
     } catch (err) { /* older browsers: leave the choice empty */ }
+
+    // Tidy a typed number into (718) 555-0123 once it's complete.
+    f.phone.addEventListener('blur', function () {
+      var d = phoneDigits(f.phone.value);
+      if (d.length === 10) f.phone.value = prettyPhone(d);
+    });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -277,11 +288,14 @@
       if (e.target.getAttribute && e.target.getAttribute('aria-invalid') === 'true') setError(e.target, '');
     });
     form.addEventListener('change', function (e) {
-      if (e.target.name === 'contact') { setError(f.email, ''); return; }
-      if (e.target.getAttribute && e.target.getAttribute('aria-invalid') === 'true') setError(e.target, '');
+      var t = e.target;
+      if (t.name === 'contact') setError(f.email, '');
+      else if (t.name === 'service') setError(f.service, '');
+      else if (t.name === 'area') setError(f.area, '');
+      else if (t.getAttribute && t.getAttribute('aria-invalid') === 'true') setError(t, '');
     });
     copyBtn.addEventListener('click', function () { copyText(preview.textContent, copyBtn, preview); });
-    var backToForm = function () { show(form); f.name.focus(); };
+    var backToForm = function () { show(form); formTitle.focus(); };
     document.getElementById('result-edit').addEventListener('click', backToForm);
     document.getElementById('sent-again').addEventListener('click', backToForm);
   }

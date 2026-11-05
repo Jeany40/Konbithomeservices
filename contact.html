@@ -52,6 +52,8 @@
     <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
     <symbol id="i-expand" viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-6.5 6.5M4 20l6.5-6.5"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="M4 7l8 6 8-6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="1.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></symbol>
   </defs>
 </svg>
 
@@ -134,81 +136,106 @@
       </div>
 
       <div class="estimate-panel" id="estimate-panel">
-        <form class="form" id="estimate-form" action="https://api.web3forms.com/submit" method="POST" aria-labelledby="form-title">
+        <form class="form" id="estimate-form" action="https://api.web3forms.com/submit" method="POST" aria-labelledby="form-title" aria-describedby="form-intro">
           <input type="hidden" name="access_key" value="c00292ad-7f0f-4dfc-91b5-5df5871703ab">
           <input type="hidden" name="subject" value="New estimate request from konbithomeservices.com">
           <input type="hidden" name="from_name" value="Konbit Home Services website">
           <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
-          <h2 class="form-title" id="form-title">Tell us about your project</h2>
-          <p class="form-note">Fields marked <span class="req" aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
-          <div class="field-row">
-            <div class="field">
-              <label for="est-name">Full name <span class="req" aria-hidden="true">*</span></label>
-              <input id="est-name" name="name" type="text" autocomplete="name" required aria-describedby="est-name-error">
-              <p class="field-error" id="est-name-error" hidden></p>
-            </div>
-            <div class="field">
-              <label for="est-phone">Phone <span class="req" aria-hidden="true">*</span></label>
-              <input id="est-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(718) 555-0123" aria-describedby="est-phone-error">
-              <p class="field-error" id="est-phone-error" hidden></p>
-            </div>
+
+          <div class="form-head">
+            <h2 class="form-title" id="form-title" tabindex="-1">Tell us about your project</h2>
+            <p class="form-intro" id="form-intro">It takes about a minute, and the estimate is free.</p>
           </div>
-          <div class="field">
-            <label for="est-email">Email <span class="optional">(optional)</span></label>
-            <input id="est-email" name="email" type="email" autocomplete="email" aria-describedby="est-email-error">
-            <p class="field-error" id="est-email-error" hidden></p>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="est-area">Project location <span class="req" aria-hidden="true">*</span></label>
-              <select id="est-area" name="area" required aria-describedby="est-area-error">
-                <option value="">Choose an area</option>
-                <option>Brooklyn</option>
-                <option>Queens</option>
-                <option>Nassau County (Long Island)</option>
-                <option>Suffolk County (Long Island)</option>
-                <option>Another nearby area</option>
-              </select>
-              <p class="field-error" id="est-area-error" hidden></p>
-            </div>
-            <div class="field">
-              <label for="est-service">Type of work <span class="req" aria-hidden="true">*</span></label>
-              <select id="est-service" name="service" required aria-describedby="est-service-error">
-                <option value="">Choose a service</option>
-                <option>Bathroom Renovations</option>
-                <option>Tile Installation</option>
-                <option>Flooring Installation</option>
-                <option>Kitchen Improvements</option>
-                <option>Carpentry</option>
-                <option>Framing &amp; Drywall</option>
-                <option>Painting</option>
-                <option>General Repairs &amp; Maintenance</option>
-                <option>Something else</option>
-              </select>
+
+          <div class="form-body">
+            <fieldset class="field" id="est-service" aria-describedby="est-service-error">
+              <legend>What do you need done?</legend>
               <p class="field-error" id="est-service-error" hidden></p>
+              <div class="pick-grid">
+                <input type="radio" id="svc-bathroom" name="service" value="Bathroom Renovations" required>
+                <label class="pick" for="svc-bathroom"><svg class="icon" aria-hidden="true"><use href="#i-bath"></use></svg><span>Bathrooms</span></label>
+                <input type="radio" id="svc-tile" name="service" value="Tile Installation">
+                <label class="pick" for="svc-tile"><svg class="icon" aria-hidden="true"><use href="#i-tile"></use></svg><span>Tile</span></label>
+                <input type="radio" id="svc-flooring" name="service" value="Flooring Installation">
+                <label class="pick" for="svc-flooring"><svg class="icon" aria-hidden="true"><use href="#i-floor"></use></svg><span>Flooring</span></label>
+                <input type="radio" id="svc-kitchen" name="service" value="Kitchen Improvements">
+                <label class="pick" for="svc-kitchen"><svg class="icon" aria-hidden="true"><use href="#i-kitchen"></use></svg><span>Kitchens</span></label>
+                <input type="radio" id="svc-carpentry" name="service" value="Carpentry">
+                <label class="pick" for="svc-carpentry"><svg class="icon" aria-hidden="true"><use href="#i-square"></use></svg><span>Carpentry</span></label>
+                <input type="radio" id="svc-framing" name="service" value="Framing &amp; Drywall">
+                <label class="pick" for="svc-framing"><svg class="icon" aria-hidden="true"><use href="#i-studs"></use></svg><span>Framing &amp; Drywall</span></label>
+                <input type="radio" id="svc-painting" name="service" value="Painting">
+                <label class="pick" for="svc-painting"><svg class="icon" aria-hidden="true"><use href="#i-roller"></use></svg><span>Painting</span></label>
+                <input type="radio" id="svc-repairs" name="service" value="General Repairs &amp; Maintenance">
+                <label class="pick" for="svc-repairs"><svg class="icon" aria-hidden="true"><use href="#i-toolbox"></use></svg><span>Repairs</span></label>
+                <input type="radio" id="svc-other" name="service" value="Something else">
+                <label class="pick pick-other" for="svc-other"><svg class="icon" aria-hidden="true"><use href="#i-chat"></use></svg><span>Something else</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="field" id="est-area" aria-describedby="est-area-error">
+              <legend>Where is the project?</legend>
+              <p class="field-error" id="est-area-error" hidden></p>
+              <div class="choice-row">
+                <input type="radio" id="area-brooklyn" name="area" value="Brooklyn" required>
+                <label for="area-brooklyn">Brooklyn</label>
+                <input type="radio" id="area-queens" name="area" value="Queens">
+                <label for="area-queens">Queens</label>
+                <input type="radio" id="area-nassau" name="area" value="Nassau County (Long Island)">
+                <label for="area-nassau">Nassau County</label>
+                <input type="radio" id="area-suffolk" name="area" value="Suffolk County (Long Island)">
+                <label for="area-suffolk">Suffolk County</label>
+                <input type="radio" id="area-other" name="area" value="Another nearby area">
+                <label for="area-other">Somewhere else nearby</label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="est-details">Project details <span class="optional">(optional)</span></label>
+              <p class="field-hint" id="est-details-hint">Rough size, timeline, or anything we should know.</p>
+              <textarea id="est-details" name="details" rows="4" maxlength="1200" aria-describedby="est-details-hint"></textarea>
             </div>
-          </div>
-          <div class="field">
-            <label for="est-details">Project details <span class="optional">(optional)</span></label>
-            <textarea id="est-details" name="details" rows="5" maxlength="1200" placeholder="What would you like done? Rough size, timeline, anything we should know."></textarea>
-          </div>
-          <fieldset class="field">
-            <legend>Best way to reach you</legend>
-            <div class="choice-row">
-              <input type="radio" id="contact-call" name="contact" value="Call" checked>
-              <label for="contact-call">Call</label>
-              <input type="radio" id="contact-text" name="contact" value="Text">
-              <label for="contact-text">Text</label>
-              <input type="radio" id="contact-email" name="contact" value="Email">
-              <label for="contact-email">Email</label>
+
+            <hr class="form-split">
+
+            <div class="field-row">
+              <div class="field">
+                <label for="est-name">Your name</label>
+                <p class="field-error" id="est-name-error" hidden></p>
+                <input id="est-name" name="name" type="text" autocomplete="name" required aria-describedby="est-name-error">
+              </div>
+              <div class="field">
+                <label for="est-phone">Phone number</label>
+                <p class="field-error" id="est-phone-error" hidden></p>
+                <input id="est-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(718) 555-0123" aria-describedby="est-phone-error">
+              </div>
             </div>
-          </fieldset>
-          <button class="btn btn-gold btn-block" id="estimate-send" type="submit">
-            <span class="btn-spinner" aria-hidden="true"></span>
-            <span class="btn-label">Send my request</span>
-          </button>
-          <p class="form-fine">Your request comes straight to our team. We only use your details to get back to you about your project.</p>
-          <p class="sr-only" id="form-live" aria-live="polite"></p>
+            <div class="field">
+              <label for="est-email">Email <span class="optional">(optional)</span></label>
+              <p class="field-error" id="est-email-error" hidden></p>
+              <input id="est-email" name="email" type="email" autocomplete="email" aria-describedby="est-email-error">
+            </div>
+            <fieldset class="field">
+              <legend>How should we reach you?</legend>
+              <div class="segmented">
+                <input type="radio" id="contact-call" name="contact" value="Call" checked>
+                <label for="contact-call"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"></use></svg>Call</label>
+                <input type="radio" id="contact-text" name="contact" value="Text">
+                <label for="contact-text"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-message"></use></svg>Text</label>
+                <input type="radio" id="contact-email" name="contact" value="Email">
+                <label for="contact-email"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail"></use></svg>Email</label>
+              </div>
+            </fieldset>
+
+            <div class="form-submit">
+              <button class="btn btn-gold btn-block btn-send" id="estimate-send" type="submit">
+                <span class="btn-spinner" aria-hidden="true"></span>
+                <span class="btn-label">Send my request</span>
+              </button>
+              <p class="form-fine"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-lock"></use></svg><span>We only use your details to get back to you about your project.</span></p>
+            </div>
+            <p class="sr-only" id="form-live" aria-live="polite"></p>
+          </div>
         </form>
 
         <div class="result" id="estimate-sent" hidden>
