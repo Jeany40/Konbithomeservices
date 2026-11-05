@@ -67,6 +67,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  overflow-x: clip;
 }
 body::before {
   content: "";
@@ -172,8 +173,7 @@ ul, ol { margin: 0; padding: 0; }
 .menu-toggle[aria-expanded="true"] .burger span:nth-child(2) { opacity: 0; transform: scaleX(.2); }
 .menu-toggle[aria-expanded="true"] .burger span:nth-child(3) { transform: rotate(-45deg); }
 .menu-label { min-width: 2.9em; text-align: left; }
-.menu-scrim { position: fixed; inset: 0; z-index: 40; background: var(--scrim-soft); }
-html.menu-locked, html.menu-locked body { overflow: hidden; }
+.menu-scrim { position: fixed; inset: 0; z-index: 40; background: var(--scrim-soft); touch-action: none; }
 
 .nav-panel {
   display: none;
