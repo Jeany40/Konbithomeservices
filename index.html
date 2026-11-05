@@ -1,0 +1,1646 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
+<title>Konbit Home Services | Home Improvement in Long Island, Queens &amp; Brooklyn</title>
+<meta name="description" content="Konbit Home Services is a family-run home improvement company serving Long Island, Queens, Brooklyn, and surrounding communities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: a contractor's site in Konbit's navy and gold. The hero is a drafting table: a front-elevation
+   drawing on blueprint grid. White service grid, navy feature bands, and the estimate form as the closing act.
+   One light theme by choice, because the logo artwork sits on white. */
+:root {
+  --navy: #0B2545;
+  --navy-deep: #061A33;
+  --navy-line: #24406A;
+  --gold: #C9962F;
+  --gold-bright: #E2B65A;
+  --gold-ink: #8A6416;
+  --paper: #FFFFFF;
+  --mist: #F3F5F8;
+  --ink: #12213A;
+  --muted: #4B5A72;
+  --rule: #DCE2EA;
+  --field-border: #8492A6;
+  --placeholder: #6B778A;
+  --on-navy: #F2F4F8;
+  --on-navy-muted: #B9C4D6;
+  --grid: rgba(226, 182, 90, 0.07);
+  --bp-line: #C9D6EA;
+  --bp-faint: #2F4C74;
+  --ghost-hover: rgba(255, 255, 255, 0.08);
+  --error: #B42318;
+  --error-bg: #FEF3F2;
+  --shadow: 0 12px 32px rgba(6, 26, 51, 0.12);
+  --scrim: rgba(6, 26, 51, 0.92);
+
+  --font-display: 'Libre Caslon Text', Georgia, 'Times New Roman', serif;
+  --font-body: 'Figtree', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --step-5: clamp(2.35rem, 1.45rem + 3.4vw, 3.9rem);
+  --step-4: clamp(1.85rem, 1.35rem + 1.9vw, 2.55rem);
+  --step-2: 1.2rem;
+  --step-1: 1.0625rem;
+  --step-0: 0.9375rem;
+  --step--1: 0.8125rem;
+
+  --header-h: 72px;
+  --radius: 6px;
+  --gutter-l: max(clamp(16px, 4vw, 40px), env(safe-area-inset-left, 0px));
+  --gutter-r: max(clamp(16px, 4vw, 40px), env(safe-area-inset-right, 0px));
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-1);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 60;
+  background: var(--paper);
+}
+h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 700; line-height: 1.15; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+a { color: var(--navy); }
+img { display: block; max-width: 100%; height: auto; }
+ul, ol { margin: 0; padding: 0; }
+:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+.hero :focus-visible, .family-copy :focus-visible, .area-band :focus-visible, .site-footer :focus-visible { outline-color: var(--gold-bright); }
+[id] { scroll-margin-top: calc(var(--header-h) + 12px); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip-link {
+  position: absolute; left: 16px; top: -120px; z-index: 100;
+  padding: .75rem 1rem; background: var(--navy); color: var(--on-navy);
+  font-weight: 700; border-radius: 4px; text-decoration: none;
+}
+.skip-link:focus { top: calc(env(safe-area-inset-top, 0px) + 8px); }
+
+.wrap {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-left: var(--gutter-l);
+  padding-right: var(--gutter-r);
+}
+
+.icon {
+  width: 1.2em; height: 1.2em; flex-shrink: 0;
+  fill: none; stroke: currentColor; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.icon-sm { width: 1em; height: 1em; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 48px; padding: .75rem 1.35rem;
+  border: 1px solid transparent; border-radius: 4px;
+  font: 600 1rem/1.2 var(--font-body);
+  text-decoration: none; cursor: pointer;
+}
+.btn-gold { background: var(--gold); color: var(--navy-deep); }
+.btn-gold:hover { background: var(--gold-bright); }
+.btn-ghost { background: transparent; border-color: var(--on-navy-muted); color: var(--on-navy); }
+.btn-ghost:hover { background: var(--ghost-hover); border-color: var(--on-navy); }
+.btn-navy { background: var(--navy); color: var(--on-navy); }
+.btn-navy:hover { background: var(--navy-deep); }
+.btn-outline { background: var(--paper); border-color: var(--navy); color: var(--navy); }
+.btn-outline:hover { background: var(--mist); }
+.btn-quiet {
+  min-height: 44px; padding: .5rem .9rem; font-size: .9375rem;
+  background: var(--paper); border-color: var(--rule); color: var(--navy);
+}
+.btn-quiet:hover { border-color: var(--navy); }
+.btn-block { width: 100%; }
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+.header-inner {
+  display: flex; align-items: center; gap: 1rem;
+  min-height: var(--header-h);
+  padding-block: .5rem;
+}
+.brand { display: block; flex-shrink: 0; line-height: 0; }
+.brand img { height: 50px; width: auto; }
+.brand-motto { display: none; }
+.header-right { margin-left: auto; display: flex; align-items: center; }
+.header-phone { display: none; }
+.menu-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; margin-left: auto;
+  border: 1px solid var(--rule); border-radius: 4px;
+  background: var(--paper); color: var(--navy); cursor: pointer;
+}
+.menu-toggle .icon { width: 24px; height: 24px; }
+.menu-toggle .icon-close { display: none; }
+.menu-toggle[aria-expanded="true"] .icon-open { display: none; }
+.menu-toggle[aria-expanded="true"] .icon-close { display: block; }
+
+.nav-panel {
+  display: none;
+  position: absolute; top: 100%; left: 0; right: 0;
+  flex-direction: column; gap: 1rem;
+  max-height: calc(100vh - var(--header-h));
+  overflow-y: auto;
+  padding-block: .5rem 1.5rem;
+  padding-left: var(--gutter-l);
+  padding-right: var(--gutter-r);
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  box-shadow: var(--shadow);
+}
+.site-header[data-menu="open"] .nav-panel { display: flex; }
+.nav-list { list-style: none; display: flex; flex-direction: column; }
+.nav-list > li { border-bottom: 1px solid var(--rule); }
+.nav-link {
+  display: flex; align-items: center; justify-content: space-between; gap: .3rem;
+  width: 100%; min-height: 48px; padding: .75rem 0;
+  background: none; border: 0; cursor: pointer; text-align: left;
+  font: 600 1.0625rem var(--font-body); color: var(--navy); text-decoration: none;
+}
+.nav-dropdown-btn .icon { transition: transform .15s; }
+.nav-dropdown-btn[aria-expanded="true"] .icon { transform: rotate(180deg); }
+.dropdown-panel {
+  list-style: none;
+  margin: 0 0 .75rem;
+  padding-left: .85rem;
+  border-left: 2px solid var(--gold);
+}
+.dropdown-panel a {
+  display: block; padding: .55rem .4rem;
+  color: var(--ink); text-decoration: none; font-size: 1rem;
+}
+.dropdown-panel a:hover { color: var(--gold-ink); }
+.dropdown-panel .dropdown-all a { font-weight: 700; color: var(--navy); }
+.nav-cta { width: 100%; }
+.nav-phone-mobile { text-align: center; color: var(--muted); font-size: var(--step-0); }
+.nav-phone-mobile a { font-weight: 700; color: var(--navy); text-decoration: none; font-variant-numeric: tabular-nums; }
+
+@media (min-width: 1000px) {
+  :root { --header-h: 92px; }
+  .brand img { height: 66px; }
+  .menu-toggle { display: none; }
+  .header-right { flex-direction: column; align-items: flex-end; gap: .2rem; }
+  .header-phone {
+    display: flex; align-items: center; gap: .45rem;
+    font: 700 1.125rem var(--font-body); color: var(--navy);
+    font-variant-numeric: tabular-nums;
+  }
+  .header-phone .icon { color: var(--gold-ink); }
+  .header-phone a { color: inherit; text-decoration: none; }
+  .nav-panel {
+    display: flex; position: static; flex-direction: row; align-items: center; gap: 1.75rem;
+    max-height: none; overflow: visible; padding: 0;
+    background: none; border: 0; box-shadow: none;
+  }
+  .nav-list { flex-direction: row; gap: 1.6rem; }
+  .nav-list > li { border: 0; position: relative; }
+  .nav-link {
+    width: auto; min-height: 40px; padding: .3rem 0;
+    font-size: .975rem; border-bottom: 2px solid transparent;
+  }
+  .nav-link:hover, .nav-link.is-current { border-bottom-color: var(--gold); }
+  .dropdown-panel {
+    position: absolute; top: calc(100% + .55rem); left: -1rem; z-index: 5;
+    min-width: 280px; margin: 0; padding: .5rem;
+    background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  .dropdown-panel a { padding: .55rem .75rem; border-radius: 4px; font-size: .975rem; }
+  .dropdown-panel a:hover { background: var(--mist); color: var(--navy); }
+  .dropdown-panel .dropdown-all { border-top: 1px solid var(--rule); margin-top: .35rem; padding-top: .35rem; }
+  .nav-cta { width: auto; min-height: 44px; padding: .6rem 1.15rem; }
+  .nav-phone-mobile { display: none; }
+}
+@media (min-width: 1180px) {
+  .brand-motto {
+    display: flex; flex-direction: column; gap: .1rem;
+    padding-left: 1.1rem; border-left: 1px solid var(--gold);
+  }
+  .hm-kreyol { font: italic 400 1.05rem/1.3 var(--font-display); color: var(--navy); }
+  .hm-en { font-size: .875rem; color: var(--muted); }
+}
+
+/* Hero */
+.hero {
+  background-color: var(--navy);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--on-navy);
+}
+.hero-inner {
+  display: grid; gap: 2.5rem; align-items: center;
+  padding-block: clamp(2.75rem, 6vw, 5.5rem);
+}
+.hero-copy { display: flex; flex-direction: column; gap: 1.4rem; min-width: 0; }
+.hero h1 { font-size: var(--step-5); line-height: 1.08; color: var(--on-navy); }
+.hero-lede { font-size: 1.15rem; color: var(--on-navy-muted); max-width: 34em; }
+.motto { display: flex; flex-direction: column; gap: .4rem; }
+.motto-line { font: italic 400 clamp(1.45rem, 1.15rem + 1vw, 1.95rem)/1.2 var(--font-display); color: var(--gold-bright); }
+.motto-sub {
+  display: flex; align-items: center; gap: .75rem;
+  font: 600 var(--step--1) var(--font-body); letter-spacing: .22em; text-transform: uppercase;
+  color: var(--on-navy);
+}
+.motto-sub::before, .motto-sub::after { content: ""; width: 2rem; height: 1px; background: var(--gold-bright); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.hero-call { font-size: var(--step-0); color: var(--on-navy-muted); }
+.hero-call a { color: var(--on-navy); font-weight: 700; text-decoration: none; font-variant-numeric: tabular-nums; border-bottom: 1px solid var(--gold-bright); }
+.hero-drawing { margin: 0; min-width: 0; }
+.hero-drawing svg { display: block; width: 100%; max-width: 640px; height: auto; margin-inline: auto; }
+@media (min-width: 960px) {
+  .hero-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3.5rem; }
+}
+
+/* Blueprint drawing */
+.bp-line { fill: none; stroke: var(--bp-line); stroke-width: 1.4; }
+.bp-thin { fill: none; stroke: var(--bp-line); stroke-width: .8; opacity: .75; }
+.bp-solid { fill: var(--navy); stroke: var(--bp-line); stroke-width: 1.4; }
+.bp-mask { fill: var(--navy); stroke: none; }
+.bp-wall { fill: url(#siding); stroke: var(--bp-line); stroke-width: 1.4; }
+.bp-gable { fill: url(#siding); stroke: none; }
+.bp-siding { stroke: var(--bp-faint); stroke-width: .9; }
+.bp-knob { fill: var(--bp-line); }
+.bp-dim { fill: none; stroke: var(--gold-bright); stroke-width: 1; }
+.bp-tick { fill: none; stroke: var(--gold-bright); stroke-width: 1.5; }
+.bp-ext { fill: none; stroke: var(--gold-bright); stroke-width: .7; stroke-dasharray: 3 3; opacity: .65; }
+.bp-text { fill: var(--gold-bright); font: 600 11px var(--font-body); letter-spacing: .06em; }
+.bp-label { fill: var(--on-navy-muted); font: 600 9px var(--font-body); letter-spacing: .08em; }
+
+/* Sections */
+.section { padding-block: clamp(3.5rem, 7vw, 6rem); }
+.section > .wrap { display: flex; flex-direction: column; gap: clamp(2rem, 4vw, 3rem); }
+.section-mist { background: var(--mist); }
+.section-head { display: flex; flex-direction: column; align-items: center; gap: .9rem; text-align: center; }
+.section-title {
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  font-size: var(--step-4); color: var(--navy);
+}
+.section-title::before, .section-title::after {
+  content: ""; flex: 0 0 clamp(1.25rem, 5vw, 4rem); height: 2px; background: var(--gold);
+}
+.section-intro { max-width: 40em; color: var(--muted); }
+.eyebrow {
+  font: 700 var(--step--1) var(--font-body); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold-ink);
+}
+
+/* Services */
+.service-grid { list-style: none; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 560px) { .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .service-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.service-card {
+  display: flex; flex-direction: column; gap: .7rem;
+  padding: 1.5rem 1.4rem 1rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.service-card:hover, .service-card:target { border-color: var(--gold); box-shadow: var(--shadow); }
+.service-card:target { outline: 2px solid var(--gold); outline-offset: 2px; }
+.service-icon { width: 42px; height: 42px; color: var(--gold-ink); stroke-width: 1.5; }
+.service-card h3 { font-size: 1.2rem; color: var(--navy); }
+.service-card p { flex-grow: 1; font-size: var(--step-0); color: var(--muted); }
+.card-link {
+  display: inline-flex; align-items: center; gap: .4rem;
+  min-height: 44px; padding-top: .7rem; margin-top: .2rem;
+  border-top: 1px solid var(--rule);
+  font-weight: 700; font-size: .95rem; color: var(--navy); text-decoration: none;
+}
+.card-link:hover { color: var(--gold-ink); }
+
+/* Family */
+.family { display: grid; grid-template-columns: minmax(0, 1fr); background: var(--navy); }
+.family-art {
+  display: flex; align-items: center; justify-content: center;
+  padding-block: 2.5rem;
+  padding-left: var(--gutter-l);
+  padding-right: var(--gutter-r);
+  background: linear-gradient(180deg, var(--paper), var(--mist));
+}
+.family-art img { width: min(100%, 540px); }
+.family-copy {
+  position: relative;
+  padding-block: clamp(2.75rem, 6vw, 4.75rem);
+  padding-left: var(--gutter-l);
+  padding-right: var(--gutter-r);
+  background-color: var(--navy);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--on-navy);
+}
+.family-copy-inner { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1.1rem; max-width: 36rem; }
+.family-copy .eyebrow { color: var(--gold-bright); }
+.family-copy h2 { font-size: var(--step-4); color: var(--on-navy); }
+.family-copy p { color: var(--on-navy-muted); }
+.family-copy .lead { color: var(--on-navy); font-size: 1.125rem; }
+.family-motto { display: flex; flex-direction: column; gap: .2rem; padding-top: .4rem; }
+.family-motto .kreyol { font: italic 400 1.35rem/1.3 var(--font-display); color: var(--gold-bright); }
+.family-motto .en { font-size: var(--step-0); color: var(--on-navy-muted); }
+@media (min-width: 960px) {
+  .family { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); }
+  .family-art { padding-block: 3rem; }
+  .family-copy { padding-left: clamp(3rem, 5vw, 5rem); display: flex; align-items: center; }
+  .family-copy::before {
+    content: ""; position: absolute; top: 0; bottom: 0; left: -34px; width: 68px;
+    background: var(--navy); border-left: 4px solid var(--gold);
+    transform: skewX(-7deg); transform-origin: top left;
+  }
+}
+
+/* Why */
+.why-grid { list-style: none; display: grid; gap: 2.25rem; grid-template-columns: minmax(0, 1fr); }
+.why-item { display: flex; flex-direction: column; align-items: center; gap: .6rem; text-align: center; padding-inline: 1.25rem; }
+.why-icon { width: 46px; height: 46px; color: var(--gold-ink); stroke-width: 1.5; }
+.why-item h3 { font-size: 1.2rem; color: var(--navy); }
+.why-item p { max-width: 22em; font-size: var(--step-0); color: var(--muted); }
+@media (min-width: 560px) { .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 1.5rem; } }
+@media (min-width: 1000px) {
+  .why-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+  .why-item + .why-item { border-left: 1px solid var(--gold); }
+}
+
+/* Work: one real project, before and after, then the build in three steps */
+.project { display: flex; flex-direction: column; gap: clamp(1.5rem, 3vw, 2.25rem); }
+.project-head { display: flex; flex-direction: column; gap: .6rem; max-width: 46rem; }
+.project-title { font-size: clamp(1.45rem, 1.2rem + 1vw, 1.9rem); color: var(--navy); }
+.project-summary { color: var(--muted); }
+.ba-pair { display: grid; gap: 1.25rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 760px) { .ba-pair { grid-template-columns: minmax(0, 16fr) minmax(0, 9fr); align-items: start; } }
+.shot { display: flex; flex-direction: column; gap: .6rem; min-width: 0; margin: 0; }
+.shot-open {
+  position: relative; display: block; width: 100%; padding: 0;
+  border: 0; border-radius: var(--radius); overflow: hidden;
+  background: var(--mist); cursor: zoom-in;
+}
+.shot-open img { width: 100%; height: auto; }
+.shot-open:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+.shot-tag {
+  position: absolute; top: .75rem; left: .75rem;
+  padding: .35rem .65rem; border-radius: 3px;
+  font: 700 var(--step--1)/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase;
+  background: var(--paper); color: var(--navy);
+}
+.shot-after .shot-tag { background: var(--gold); color: var(--navy-deep); }
+.shot-zoom {
+  position: absolute; right: .75rem; bottom: .75rem;
+  display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%;
+  background: var(--navy); color: var(--on-navy);
+}
+.shot figcaption { font-size: var(--step-0); color: var(--muted); }
+.build { display: flex; flex-direction: column; gap: 1rem; }
+.build-label { font: 700 var(--step--1) var(--font-body); letter-spacing: .2em; text-transform: uppercase; color: var(--gold-ink); }
+.build-steps { list-style: none; display: grid; gap: 1.1rem; grid-template-columns: minmax(0, 1fr); }
+.build-step { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 1rem; align-items: start; }
+.build-step .shot-open img { aspect-ratio: 3 / 4; object-fit: cover; }
+.build-text { display: flex; flex-direction: column; gap: .3rem; min-width: 0; }
+.build-num { font: 700 var(--step--1) var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--gold-ink); }
+.build-step h4 { margin: 0; font: 700 1.15rem/1.25 var(--font-display); color: var(--navy); }
+.build-text p:last-child { font-size: var(--step-0); color: var(--muted); }
+@media (min-width: 640px) {
+  .build-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+  .build-step { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
+}
+.project + .project { padding-top: clamp(2rem, 5vw, 3.5rem); border-top: 1px solid var(--rule); }
+.build-steps.is-landscape .shot-open img { aspect-ratio: 4 / 3; }
+.build-steps.is-landscape .build-step { grid-template-columns: 140px minmax(0, 1fr); }
+@media (min-width: 640px) { .build-steps.is-landscape .build-step { grid-template-columns: minmax(0, 1fr); } }
+.mini-grid { list-style: none; display: grid; gap: 1.25rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) { .mini-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; } }
+.mini-card {
+  display: flex; flex-direction: column; gap: .9rem; min-width: 0;
+  padding: .75rem .75rem .5rem;
+  background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius);
+}
+.mini-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+.mini-pair .shot-open img { aspect-ratio: 4 / 3; object-fit: cover; }
+.mini-pair .shot-tag { top: .5rem; left: .5rem; padding: .3rem .5rem; font-size: .75rem; }
+.mini-pair .shot-after .shot-tag { background: var(--gold); color: var(--navy-deep); }
+.mini-pair .shot-progress .shot-tag { background: var(--navy); color: var(--on-navy); }
+.mini-body { flex: 1 1 auto; display: flex; flex-direction: column; gap: .4rem; padding-inline: .35rem; }
+.mini-body h4 { margin: 0; font: 700 1.2rem/1.25 var(--font-display); color: var(--navy); text-wrap: balance; }
+.mini-body p { font-size: var(--step-0); color: var(--muted); }
+.mini-more {
+  align-self: flex-start; margin-top: auto; display: inline-flex; align-items: center; gap: .45rem;
+  min-height: 44px; padding: .5rem 0;
+  background: none; border: 0; cursor: pointer;
+  font: 700 .95rem var(--font-body); color: var(--navy);
+}
+.mini-more:hover { color: var(--gold-ink); }
+.work-cta { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; }
+.work-more { font-size: var(--step-0); color: var(--muted); }
+
+/* Photo viewer */
+.lightbox {
+  padding: 0; border: 0; background: transparent; color: var(--on-navy);
+  max-width: min(96vw, 1180px); max-height: 100vh; overflow: auto;
+}
+.lightbox::backdrop { background: var(--scrim); }
+.lightbox-inner { display: flex; flex-direction: column; gap: .75rem; padding: .5rem; }
+.lightbox-img {
+  display: block; width: auto; height: auto; margin-inline: auto; border-radius: 4px;
+  max-width: min(94vw, 1160px); max-height: calc(100vh - 7.5rem);
+}
+.lightbox-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; }
+.lightbox-caption { flex: 1 1 16rem; min-width: 0; font-size: var(--step-0); color: var(--on-navy); }
+.lightbox-controls { display: flex; align-items: center; gap: .5rem; }
+.lb-btn {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--on-navy-muted); background: transparent; color: var(--on-navy); cursor: pointer;
+}
+.lb-btn:hover { background: var(--ghost-hover); }
+.lb-count { min-width: 3.5em; text-align: center; font-size: var(--step-0); color: var(--on-navy-muted); font-variant-numeric: tabular-nums; }
+.lightbox :focus-visible { outline-color: var(--gold-bright); }
+
+/* Process */
+.process { list-style: none; display: grid; gap: 1.75rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) { .process { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; } }
+.step { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1rem; align-items: start; }
+.step-num {
+  display: grid; place-items: center;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--gold); color: var(--navy-deep);
+  font: 700 1.3rem/1 var(--font-display);
+}
+.step-body { display: flex; flex-direction: column; gap: .4rem; padding-top: .35rem; }
+.step-body h3 { font-size: 1.2rem; color: var(--navy); }
+.step-body p { font-size: var(--step-0); color: var(--muted); }
+
+/* Service area band */
+.area-band { background: var(--navy-deep); color: var(--on-navy); border-top: 3px solid var(--gold); }
+.area-inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 1.25rem 2.5rem; padding-block: 2rem;
+}
+.area-text {
+  display: flex; align-items: flex-start; gap: .85rem; min-width: 0;
+  flex: 1 1 20rem; max-width: 34rem;
+  font: italic 400 clamp(1.15rem, 1rem + .6vw, 1.45rem)/1.4 var(--font-display);
+}
+.area-phone, .area-inner > .btn { flex: 0 0 auto; white-space: nowrap; }
+.area-text .icon { width: 28px; height: 28px; margin-top: .15rem; color: var(--gold-bright); }
+.area-phone {
+  display: flex; align-items: center; gap: .6rem;
+  font: 700 clamp(1.5rem, 1.2rem + 1vw, 2rem) var(--font-body); font-variant-numeric: tabular-nums;
+}
+.area-phone .icon { color: var(--gold-bright); }
+.area-phone a { color: var(--on-navy); text-decoration: none; }
+
+/* Estimate */
+.estimate { background: var(--mist); }
+.section > .estimate-inner { display: grid; gap: 2.5rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 960px) { .section > .estimate-inner { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 4rem; align-items: start; } }
+.estimate-info { display: flex; flex-direction: column; gap: 1.1rem; min-width: 0; }
+.estimate-info h2 { font-size: var(--step-4); color: var(--navy); }
+.estimate-info > p { color: var(--muted); max-width: 32em; }
+.contact-card {
+  display: flex; flex-direction: column; gap: .5rem;
+  padding: 1.4rem; margin-top: .4rem;
+  background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius);
+}
+.contact-label {
+  font: 700 var(--step--1) var(--font-body); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--gold-ink);
+}
+.contact-phone { font: 700 1.75rem/1.2 var(--font-body); font-variant-numeric: tabular-nums; }
+.contact-phone a { color: var(--navy); text-decoration: none; }
+.contact-card .btn-quiet { align-self: flex-start; }
+.contact-divider { height: 1px; background: var(--rule); margin-block: .6rem; }
+.contact-card .area-list { color: var(--muted); font-size: var(--step-0); }
+
+.estimate-panel {
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.form { display: flex; flex-direction: column; gap: 1.15rem; }
+.form-title { font-size: 1.45rem; color: var(--navy); scroll-margin-top: calc(var(--header-h) + 16px); }
+.form-note { font-size: var(--step-0); color: var(--muted); }
+.field-row { display: grid; gap: 1.15rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 560px) { .field-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.field { display: flex; flex-direction: column; gap: .4rem; min-width: 0; margin: 0; padding: 0; border: 0; }
+.field label, .field legend { font-weight: 600; font-size: .975rem; color: var(--navy); }
+.field legend { padding: 0 0 .45rem; }
+.req { color: var(--gold-ink); }
+.optional { font-weight: 400; color: var(--muted); }
+.field input[type="text"], .field input[type="tel"], .field input[type="email"], .field select, .field textarea {
+  width: 100%; min-height: 48px; padding: .7rem .85rem;
+  font: 400 1rem/1.4 var(--font-body); color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--field-border); border-radius: 4px;
+}
+.field textarea { min-height: 132px; resize: vertical; }
+.field ::placeholder { color: var(--placeholder); opacity: 1; }
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--navy); outline-offset: 1px; border-color: var(--navy); }
+.field [aria-invalid="true"] { border-color: var(--error); background: var(--error-bg); }
+.field-error { color: var(--error); font-size: .9rem; font-weight: 600; }
+.choice-row { display: flex; flex-wrap: wrap; gap: .5rem; }
+.choice-row input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.choice-row label {
+  display: inline-flex; align-items: center; min-height: 44px; padding: .5rem 1.15rem;
+  border: 1px solid var(--field-border); border-radius: 999px;
+  background: var(--paper); color: var(--navy); font-weight: 600; cursor: pointer;
+}
+.choice-row input:checked + label { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+.choice-row input:focus-visible + label { outline: 3px solid var(--navy); outline-offset: 2px; }
+.form-fine { font-size: .875rem; color: var(--muted); text-align: center; }
+
+.result { display: flex; flex-direction: column; gap: 1rem; }
+.result-preview {
+  margin: 0; padding: 1rem; max-height: 340px; overflow: auto;
+  white-space: pre-wrap; overflow-wrap: anywhere;
+  font: 400 .95rem/1.55 var(--font-body); color: var(--ink);
+  background: var(--mist); border: 1px solid var(--rule); border-radius: 4px;
+}
+.result-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+.result-help { font-size: var(--step-0); color: var(--muted); }
+.result-call { font-size: var(--step-0); color: var(--muted); }
+.result-call a { font-weight: 700; color: var(--navy); font-variant-numeric: tabular-nums; }
+.link-btn {
+  align-self: flex-start; min-height: 44px; padding: .5rem 0;
+  background: none; border: 0; cursor: pointer;
+  font: 600 1rem var(--font-body); color: var(--navy); text-decoration: underline;
+}
+
+/* Footer */
+.site-footer { background: var(--navy-deep); color: var(--on-navy-muted); }
+.footer-inner { display: grid; gap: 2.25rem; grid-template-columns: minmax(0, 1fr); padding-block: 3.25rem 2.25rem; }
+@media (min-width: 760px) { .footer-inner { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, .7fr); } }
+.footer-brand { display: flex; flex-direction: column; gap: .55rem; }
+.footer-wordmark { font: 700 2.4rem/1 var(--font-display); letter-spacing: .04em; color: var(--on-navy); }
+.footer-sub {
+  display: flex; align-items: center; gap: .6rem;
+  font: 600 .78rem var(--font-body); letter-spacing: .32em; text-transform: uppercase; color: var(--gold-bright);
+}
+.footer-sub::before, .footer-sub::after { content: ""; width: 1.25rem; height: 1px; background: var(--gold-bright); }
+.footer-motto { padding-top: .5rem; font: italic 400 1.15rem/1.3 var(--font-display); color: var(--on-navy); }
+.footer-motto-en { font-size: var(--step-0); }
+.footer-heading {
+  font: 700 var(--step--1) var(--font-body); letter-spacing: .18em; text-transform: uppercase;
+  color: var(--gold-bright);
+}
+.footer-contact { display: flex; flex-direction: column; gap: .9rem; }
+.footer-line { display: flex; align-items: flex-start; gap: .6rem; }
+.footer-line .icon { color: var(--gold-bright); margin-top: .2rem; }
+.footer-phone a { font: 700 1.35rem var(--font-body); color: var(--on-navy); text-decoration: none; font-variant-numeric: tabular-nums; }
+.footer-area strong { display: block; color: var(--on-navy); }
+.footer-links { display: flex; flex-direction: column; gap: .9rem; }
+.footer-links ul { list-style: none; display: flex; flex-direction: column; gap: .35rem; }
+.footer-links a { display: inline-block; padding-block: .2rem; color: var(--on-navy); text-decoration: none; }
+.footer-links a:hover { color: var(--gold-bright); text-decoration: underline; }
+.footer-bottom { padding-block: 1.25rem calc(1.25rem + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--navy-line); font-size: .875rem; text-align: center; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  .btn, .service-card, .card-link, .nav-link { transition: background-color .15s, border-color .15s, color .15s, box-shadow .2s, transform .2s; }
+  .service-card:hover { transform: translateY(-3px); }
+  .shot-open img { transition: transform .35s ease; }
+  .shot-open:hover img { transform: scale(1.025); }
+}
+</style>
+<link rel="canonical" href="https://konbithomeservices.com/">
+<meta name="theme-color" content="#0B2545">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Konbit Home Services">
+<meta property="og:title" content="Konbit Home Services">
+<meta property="og:description" content="A family-run home improvement company serving Long Island, Queens, Brooklyn, and surrounding communities. Call or text (718) 696-7379 for a free estimate.">
+<meta property="og:url" content="https://konbithomeservices.com/">
+<meta property="og:image" content="https://konbithomeservices.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Konbit Home Services logo">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Konbit Home Services",
+  "url": "https://konbithomeservices.com/",
+  "logo": "https://konbithomeservices.com/konbit-logo-512.png",
+  "image": "https://konbithomeservices.com/og-image.jpg",
+  "telephone": "+1-718-696-7379",
+  "slogan": "Men anpil, chay pa lou (Many hands, light work)",
+  "description": "A family-run home improvement company offering bathroom renovations, tile, flooring, kitchen improvements, carpentry, framing and drywall, painting, and general repairs.",
+  "areaServed": [
+    {
+      "@type": "AdministrativeArea",
+      "name": "Brooklyn, NY"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Queens, NY"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Nassau County, NY"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Suffolk County, NY"
+    }
+  ]
+}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4.5-2 1.3a11 11 0 0 0 5.7 5.7l1.3-2 4.5 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M4 5h16v11H10l-5 4v-4H4z"/></symbol>
+    <symbol id="i-bath" viewBox="0 0 24 24"><path d="M3 12h18v2.5A5.5 5.5 0 0 1 15.5 20h-7A5.5 5.5 0 0 1 3 14.5z"/><path d="M6 12V6.2a2.2 2.2 0 0 1 4.2-.9"/><path d="M7 20l-1 2M17 20l1 2"/></symbol>
+    <symbol id="i-tile" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="1"/><path d="M3.5 9.2h17M3.5 14.8h17M9.2 3.5v17M14.8 3.5v17"/></symbol>
+    <symbol id="i-floor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9.3h18M3 14.7h18M10 4v5.3M15 9.3v5.4M8 14.7V20"/></symbol>
+    <symbol id="i-kitchen" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="1"/><path d="M3.5 11h17M12 3.5v17M9.5 6.5v2M14.5 6.5v2M9.5 14v2M14.5 14v2"/></symbol>
+    <symbol id="i-square" viewBox="0 0 24 24"><path d="M4 3.5h4v13h13v4H4z"/><path d="M6 7h2M6 10.5h2M6 14h2M11 18.5v2M14.5 18.5v2M18 18.5v2"/></symbol>
+    <symbol id="i-studs" viewBox="0 0 24 24"><path d="M3 5h18M3 19h18M5 5v14M10 5v14M14 5v14M19 5v14"/></symbol>
+    <symbol id="i-roller" viewBox="0 0 24 24"><rect x="3" y="4" width="14" height="5" rx="1"/><path d="M17 6.5h2.5a1 1 0 0 1 1 1V11a1 1 0 0 1-1 1H12v3"/><rect x="10.5" y="15" width="3" height="6" rx="1"/></symbol>
+    <symbol id="i-toolbox" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="1.5"/><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8M3 13h18M10.5 13v2h3v-2"/></symbol>
+    <symbol id="i-family" viewBox="0 0 24 24"><circle cx="6.5" cy="8.5" r="2.4"/><circle cx="17.5" cy="8.5" r="2.4"/><circle cx="12" cy="7" r="2.7"/><path d="M2.5 19a4.2 4.2 0 0 1 6.6-3.4M21.5 19a4.2 4.2 0 0 0-6.6-3.4M7 20a5 5 0 0 1 10 0"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M9.2 13.8L8 21l4-2.2 4 2.2-1.2-7.2"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H10l-5 4v-4H4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></symbol>
+    <symbol id="i-chev-left" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+    <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-6.5 6.5M4 20l6.5-6.5"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" data-menu="closed">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <img src="konbit-logo.png" alt="Konbit Home Services" width="330" height="240">
+    </a>
+    <div class="brand-motto">
+      <p class="hm-kreyol" lang="ht">Men anpil, chay pa lou</p>
+      <p class="hm-en">Many hands, light work.</p>
+    </div>
+    <div class="header-right">
+      <p class="header-phone">
+        <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
+        <a href="tel:+17186967379">(718) 696-7379</a>
+      </p>
+      <nav class="nav-panel" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a class="nav-link is-current" data-section="top" href="#top">Home</a></li>
+          <li><a class="nav-link" data-section="about" href="#about">About</a></li>
+          <li class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn" id="services-toggle" type="button" data-section="services" aria-expanded="false" aria-controls="services-menu">
+              Services <svg class="icon icon-sm" aria-hidden="true"><use href="#i-chevron"></use></svg>
+            </button>
+            <ul class="dropdown-panel" id="services-menu" hidden>
+              <li><a href="#svc-bathroom">Bathroom Renovations</a></li>
+              <li><a href="#svc-tile">Tile Installation</a></li>
+              <li><a href="#svc-flooring">Flooring Installation</a></li>
+              <li><a href="#svc-kitchen">Kitchen Improvements</a></li>
+              <li><a href="#svc-carpentry">Carpentry</a></li>
+              <li><a href="#svc-framing">Framing &amp; Drywall</a></li>
+              <li><a href="#svc-painting">Painting</a></li>
+              <li><a href="#svc-repairs">General Repairs &amp; Maintenance</a></li>
+              <li class="dropdown-all"><a href="#services">See all services</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link" data-section="work" href="#work">Our Work</a></li>
+          <li><a class="nav-link" data-section="estimate" href="#estimate">Contact</a></li>
+        </ul>
+        <a class="btn btn-gold nav-cta" href="#estimate">Get a Free Estimate</a>
+        <p class="nav-phone-mobile">Call or text <a href="tel:+17186967379">(718) 696-7379</a></p>
+      </nav>
+    </div>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <svg class="icon icon-open" aria-hidden="true"><use href="#i-menu"></use></svg>
+      <svg class="icon icon-close" aria-hidden="true"><use href="#i-close"></use></svg>
+      <span class="sr-only">Open menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <h1 id="hero-title">Your Home Deserves Our Best Work.</h1>
+        <p class="hero-lede">A family-run home improvement company delivering quality craftsmanship, reliable service, and lasting results for your home.</p>
+        <div class="motto">
+          <p class="motto-line" lang="ht">Men anpil, chay pa lou</p>
+          <p class="motto-sub">Many hands, light work</p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#estimate">Get a Free Estimate <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          <a class="btn btn-ghost" href="#services">Our Services</a>
+        </div>
+        <p class="hero-call">Prefer to talk? Call or text <a href="tel:+17186967379">(718) 696-7379</a></p>
+      </div>
+      <figure class="hero-drawing">
+        <svg viewBox="0 0 640 460" aria-hidden="true" focusable="false">
+          <defs>
+            <pattern id="siding" width="12" height="11" patternUnits="userSpaceOnUse">
+              <path class="bp-siding" d="M0 10.5H12"/>
+            </pattern>
+          </defs>
+          <path class="bp-line" d="M24 380H616"/>
+          <path class="bp-line" d="M440 175V128H468V193"/>
+          <rect class="bp-solid" x="435" y="122" width="38" height="6"/>
+          <polygon class="bp-gable" points="120,236 320,108 520,236"/>
+          <rect class="bp-wall" x="120" y="236" width="400" height="132"/>
+          <path class="bp-solid" d="M98 240L320 98L542 240L536 246L320 108L104 246Z"/>
+          <rect class="bp-solid" x="304" y="150" width="32" height="32"/>
+          <path class="bp-thin" d="M320 150V182M304 166H336"/>
+          <rect class="bp-solid" x="146" y="268" width="48" height="60"/>
+          <path class="bp-thin" d="M170 268V328M146 298H194"/>
+          <path class="bp-line" d="M141 330H199"/>
+          <rect class="bp-solid" x="206" y="268" width="48" height="60"/>
+          <path class="bp-thin" d="M230 268V328M206 298H254"/>
+          <path class="bp-line" d="M201 330H259"/>
+          <rect class="bp-solid" x="386" y="268" width="48" height="60"/>
+          <path class="bp-thin" d="M410 268V328M386 298H434"/>
+          <path class="bp-line" d="M381 330H439"/>
+          <rect class="bp-solid" x="446" y="268" width="48" height="60"/>
+          <path class="bp-thin" d="M470 268V328M446 298H494"/>
+          <path class="bp-line" d="M441 330H499"/>
+          <rect class="bp-solid" x="114" y="368" width="412" height="12"/>
+          <polygon class="bp-mask" points="251,271 320,232 389,271"/>
+          <path class="bp-solid" d="M246 268L320 226L394 268L389 271L320 232L251 271Z"/>
+          <path class="bp-line" d="M251 271H389"/>
+          <rect class="bp-solid" x="302" y="284" width="36" height="84"/>
+          <rect class="bp-thin" x="308" y="292" width="24" height="32"/>
+          <rect class="bp-thin" x="308" y="331" width="24" height="30"/>
+          <circle class="bp-knob" cx="332" cy="327" r="1.6"/>
+          <rect class="bp-solid" x="262" y="271" width="8" height="97"/>
+          <rect class="bp-solid" x="370" y="271" width="8" height="97"/>
+          <rect class="bp-solid" x="282" y="368" width="76" height="6"/>
+          <rect class="bp-solid" x="274" y="374" width="92" height="6"/>
+          <path class="bp-ext" d="M120 386V420M520 386V420"/>
+          <path class="bp-dim" d="M120 412H520"/>
+          <path class="bp-tick" d="M115 417L125 407M515 417L525 407"/>
+          <text class="bp-text" x="320" y="405" text-anchor="middle">33'-4"</text>
+          <path class="bp-ext" d="M112 236H62"/>
+          <path class="bp-dim" d="M72 236V380"/>
+          <path class="bp-tick" d="M67 241L77 231M67 385L77 375"/>
+          <text class="bp-text" transform="translate(63 308) rotate(-90)" text-anchor="middle">12'-0"</text>
+          <path class="bp-ext" d="M326 98H588"/>
+          <path class="bp-dim" d="M578 98V380"/>
+          <path class="bp-tick" d="M573 103L583 93M573 385L583 375"/>
+          <text class="bp-text" transform="translate(593 239) rotate(-90)" text-anchor="middle">23'-6"</text>
+          <rect class="bp-thin" x="372" y="428" width="244" height="26"/>
+          <path class="bp-thin" d="M482 428V454"/>
+          <text class="bp-label" x="380" y="445">FRONT ELEVATION</text>
+          <text class="bp-label" x="608" y="445" text-anchor="end">SCALE 1/4" = 1'-0"</text>
+        </svg>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title" id="services-title">Complete Home Improvement Solutions</h2>
+        <p class="section-intro">Repairs, renovations, and everything in between, done by one family team.</p>
+      </div>
+      <ul class="service-grid">
+        <li class="service-card" id="svc-bathroom">
+          <svg class="icon service-icon" aria-hidden="true"><use href="#i-bath"></use></svg>
+          <h3>Bathroom Renovations</h3>
+          <p>Full remodels or a fresh update, with new tile, vanities, and finishes that last.</p>
+          <a class="card-link" href="#estimate" data-estimate-service="Bathroom Renovations">Get an estimate<span class="sr-only"> for bathroom renovations</span> <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </li>
+        <li class="service-card" id="svc-tile">
+          <svg class="icon service-icon" aria-hidden="true"><use href="#i-tile"></use></svg>
+          <h3>Tile Installation</h3>
+          <p>Floors, walls, showers, and backsplashes, set level and finished with clean grout lines.</p>
+          <a class="card-link" href="#estimate" data-estimate-service="Tile Installation">Get an estimate<span class="sr-only"> for tile installation</span> <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </li>
+        <li class="service-card" id="svc-flooring">
+          <svg class="icon service-icon" aria-hidden="true"><use href="#i-floor"></use></svg>
+          <h3>Flooring Installation</h3>
+          <p>Vinyl plank, laminate, hardwood, and tile for floors and stairs, with subfloor repairs when needed.</p>
+          <a class="card-link" href="#estimate" data-estimate-service="Flooring Installation">Get an estimate<span class="sr-only"> for flooring installation</span> <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </li>
+        <li class="service-card" id="svc-kitchen">
+          <svg class="icon service-icon" aria-hidden="true"><use href="#i-kitchen"></use></svg>
+          <h3>Kitchen Improvements</h3>
+          <p>Cabinets, counters, backsplashes, and updates that make your kitchen work better.</p>
+          <a class="card-link" href="#estimate" data-estimate-service="Kitchen Improvements">Get an estimate<span class="sr-only"> for kitchen improvements</span> <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </li>
+        <li class="service-card" id="svc-carpentry">
+          <svg class="icon service-icon" aria-hidden="true"><use href="#i-square"></use></svg>
+          <h3>Carpentry</h3>
+          <p>Trim, doors, shelving, and custom woodwork, measured and finished by hand.</p>
+          <a class="card-link" href="#estimate" data-estimate-service="Carpentry">Get an estimate<span class="sr-only"> for carpentry</span> <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </li>
+        <li class="service-card" id="svc-framing">
+          <svg class="icon service-icon" aria-hidden="true"><use href="#i-studs"></use></svg>
+          <h3>Framing &amp; Drywall</h3>
+          <p>New walls and ceilings, basement build-outs, and drywall repairs, framed square and finished smooth.</p>
+          <a class="card-link" href="#estimate" data-estimate-service="Framing &amp; Drywall">Get an estimate<span class="sr-only"> for framing and drywall</span> <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </li>
+        <li class="service-card" id="svc-painting">
+          <svg class="icon service-icon" aria-hidden="true"><use href="#i-roller"></use></svg>
+          <h3>Painting</h3>
+          <p>Interior and exterior painting with careful prep and clean lines.</p>
+          <a class="card-link" href="#estimate" data-estimate-service="Painting">Get an estimate<span class="sr-only"> for painting</span> <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </li>
+        <li class="service-card" id="svc-repairs">
+          <svg class="icon service-icon" aria-hidden="true"><use href="#i-toolbox"></use></svg>
+          <h3>General Repairs &amp; Maintenance</h3>
+          <p>Doors, hardware, small repairs, and seasonal upkeep. We take care of the fix-it list.</p>
+          <a class="card-link" href="#estimate" data-estimate-service="General Repairs &amp; Maintenance">Get an estimate<span class="sr-only"> for general repairs and maintenance</span> <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="family" id="about" aria-labelledby="about-title">
+    <div class="family-art">
+      <img src="konbit-crew.jpg" alt="The Konbit emblem: three workers in hard hats inside a navy and gold house" width="931" height="557">
+    </div>
+    <div class="family-copy">
+      <div class="family-copy-inner">
+        <p class="eyebrow">About us</p>
+        <h2 id="about-title">More Than a Crew. We’re Family.</h2>
+        <p class="lead">Konbit Home Services is a family-run company built on teamwork, trust, and craftsmanship. We treat every project like it’s our own home, with care, respect, and a commitment to quality that lasts.</p>
+        <p>Our name comes from Haitian Creole. A konbit is when family and neighbors come together to finish a big job. Jean, Stevenson, and Mackenson built this company on that idea.</p>
+        <div class="family-motto">
+          <p class="kreyol" lang="ht">Men anpil, chay pa lou</p>
+          <p class="en">Many hands, light work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-mist" id="why" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title" id="why-title">Why Choose Konbit</h2>
+      </div>
+      <ul class="why-grid">
+        <li class="why-item">
+          <svg class="icon why-icon" aria-hidden="true"><use href="#i-family"></use></svg>
+          <h3>Family-Owned</h3>
+          <p>A local, family-run business that values relationships and community.</p>
+        </li>
+        <li class="why-item">
+          <svg class="icon why-icon" aria-hidden="true"><use href="#i-award"></use></svg>
+          <h3>Attention to Detail</h3>
+          <p>Quality craftsmanship and careful workmanship in every project.</p>
+        </li>
+        <li class="why-item">
+          <svg class="icon why-icon" aria-hidden="true"><use href="#i-chat"></use></svg>
+          <h3>Clear Communication</h3>
+          <p>We keep you informed at every step, from planning to completion.</p>
+        </li>
+        <li class="why-item">
+          <svg class="icon why-icon" aria-hidden="true"><use href="#i-home"></use></svg>
+          <h3>Respect for Your Home</h3>
+          <p>A clean, professional worksite and a team that treats your home with care.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title" id="work-title">Real Projects. Real Transformations.</h2>
+        <p class="section-intro">Recent work from our crew, shown step by step.</p>
+      </div>
+      <article class="project" aria-labelledby="project-bath-title">
+        <div class="project-head">
+          <p class="eyebrow">Renovation</p>
+          <h3 class="project-title" id="project-bath-title">Tub-to-Shower Bathroom Renovation</h3>
+          <p class="project-summary">We replaced a dated tub with a walk-in shower, finished with large marble-look wall tile, a hexagon mosaic floor, black rain and handheld shower fixtures, a built-in niche, and a sliding glass door.</p>
+        </div>
+        <div class="ba-pair">
+          <figure class="shot shot-before">
+            <button class="shot-open" type="button" data-gallery="bath1" data-lightbox="0" data-full="bath-before-1600.jpg" data-caption="Before: a dated tub with frosted sliding doors and worn tile.">
+              <img src="bath-before-960.jpg" srcset="bath-before-960.jpg 960w, bath-before-1600.jpg 1600w" sizes="(min-width: 760px) 60vw, 100vw" width="1600" height="1200" loading="lazy" alt="Before: an old bathtub with frosted sliding doors, worn wall tile, and an over-the-toilet cabinet">
+              <span class="shot-tag">Before</span>
+              <span class="shot-zoom" aria-hidden="true"><svg class="icon icon-sm"><use href="#i-expand"></use></svg></span>
+              <span class="sr-only">View larger</span>
+            </button>
+            <figcaption>A dated tub with frosted sliding doors and worn tile.</figcaption>
+          </figure>
+          <figure class="shot shot-after">
+            <button class="shot-open" type="button" data-gallery="bath1" data-lightbox="4" data-full="bath-after-1200.jpg" data-caption="After: a walk-in shower with a hexagon mosaic floor, black rain and handheld shower, a built-in niche, and a new vanity.">
+              <img src="bath-after-600.jpg" srcset="bath-after-600.jpg 600w, bath-after-1200.jpg 1200w" sizes="(min-width: 760px) 34vw, 100vw" width="1200" height="1600" loading="lazy" alt="After: a walk-in shower with large gray marble-look tile, a hexagon mosaic floor, black rain and handheld shower fixtures, a tiled niche, a sliding glass door, and a new white vanity">
+              <span class="shot-tag">After</span>
+              <span class="shot-zoom" aria-hidden="true"><svg class="icon icon-sm"><use href="#i-expand"></use></svg></span>
+              <span class="sr-only">View larger</span>
+            </button>
+            <figcaption>A walk-in shower with a hexagon mosaic floor, black fixtures, and a built-in niche.</figcaption>
+          </figure>
+        </div>
+        <div class="build">
+          <p class="build-label">How we built it</p>
+          <ol class="build-steps">
+            <li class="build-step">
+              <button class="shot-open" type="button" data-gallery="bath1" data-lightbox="1" data-full="bath-demo-1200.jpg" data-caption="Step 1, down to the studs: the old tub, tile, and walls removed to the framing.">
+                <img src="bath-demo-600.jpg" srcset="bath-demo-600.jpg 600w, bath-demo-1200.jpg 1200w" sizes="(min-width: 640px) 30vw, 112px" width="1200" height="1600" loading="lazy" alt="Demolition: the bathroom stripped to the wall framing and subfloor, with the old tub removed">
+                <span class="sr-only">View larger</span>
+              </button>
+              <div class="build-text">
+                <p class="build-num">Step 1</p>
+                <h4>Down to the studs</h4>
+                <p>We removed the old tub, tile, and walls down to the framing.</p>
+              </div>
+            </li>
+            <li class="build-step">
+              <button class="shot-open" type="button" data-gallery="bath1" data-lightbox="2" data-full="bath-backer-1200.jpg" data-caption="Step 2, a waterproof base: new backer board on the walls and a sealed shower base and curb around the new drain.">
+                <img src="bath-backer-600.jpg" srcset="bath-backer-600.jpg 600w, bath-backer-1200.jpg 1200w" sizes="(min-width: 640px) 30vw, 112px" width="1200" height="1600" loading="lazy" alt="New waterproof backer board on the shower walls, with a sealed shower base, curb, and drain">
+                <span class="sr-only">View larger</span>
+              </button>
+              <div class="build-text">
+                <p class="build-num">Step 2</p>
+                <h4>A waterproof base</h4>
+                <p>New waterproof backer board on the walls, and a sealed shower base and curb around the new drain.</p>
+              </div>
+            </li>
+            <li class="build-step">
+              <button class="shot-open" type="button" data-gallery="bath1" data-lightbox="3" data-full="bath-tile-1200.jpg" data-caption="Step 3, tile set level: large-format wall tile installed with a leveling system, with a recessed niche framed in.">
+                <img src="bath-tile-600.jpg" srcset="bath-tile-600.jpg 600w, bath-tile-1200.jpg 1200w" sizes="(min-width: 640px) 30vw, 112px" width="1200" height="1600" loading="lazy" alt="Large gray marble-look tiles going up on the shower walls with leveling clips, and a niche framed in">
+                <span class="sr-only">View larger</span>
+              </button>
+              <div class="build-text">
+                <p class="build-num">Step 3</p>
+                <h4>Tile, set level</h4>
+                <p>Large-format wall tile installed with a leveling system, plus a recessed niche.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="project" aria-labelledby="project-bath2-title">
+        <div class="project-head">
+          <p class="eyebrow">Built from scratch</p>
+          <h3 class="project-title" id="project-bath2-title">New Bathroom, Framing to Finish</h3>
+          <p class="project-summary">We built this bathroom from the framing up, with a tiled walk-in shower, a hexagon mosaic shower floor, a built-in niche, large marble-look floor tile, a gray shaker vanity, and a backlit mirror.</p>
+        </div>
+        <div class="ba-pair">
+          <figure class="shot shot-before">
+            <button class="shot-open" type="button" data-gallery="bath2" data-lightbox="0" data-full="bath2-framing-1600.jpg" data-caption="Framing: new wood framing goes up, with foam board insulation on the walls behind it.">
+              <img src="bath2-framing-960.jpg" srcset="bath2-framing-960.jpg 960w, bath2-framing-1600.jpg 1600w" sizes="(min-width: 760px) 60vw, 100vw" width="1600" height="1200" loading="lazy" alt="Framing stage: new wood stud walls in front of foil-faced foam board insulation, with pipes and wiring roughed in">
+              <span class="shot-tag">Framing</span>
+              <span class="shot-zoom" aria-hidden="true"><svg class="icon icon-sm"><use href="#i-expand"></use></svg></span>
+              <span class="sr-only">View larger</span>
+            </button>
+            <figcaption>New wood framing, with foam board insulation behind it.</figcaption>
+          </figure>
+          <figure class="shot shot-after">
+            <button class="shot-open" type="button" data-gallery="bath2" data-lightbox="4" data-full="bath2-finished-1200.jpg" data-caption="Finished: a walk-in shower with a sliding glass door, black rain and handheld shower, a gray shaker vanity, and a backlit mirror.">
+              <img src="bath2-finished-600.jpg" srcset="bath2-finished-600.jpg 600w, bath2-finished-1200.jpg 1200w" sizes="(min-width: 760px) 34vw, 100vw" width="1200" height="1600" loading="lazy" alt="Finished bathroom: a walk-in shower with white marble-look tile, a hexagon mosaic floor, a tiled niche, black fixtures, and a black-framed sliding glass door, next to a gray vanity with a black faucet and a backlit mirror">
+              <span class="shot-tag">Finished</span>
+              <span class="shot-zoom" aria-hidden="true"><svg class="icon icon-sm"><use href="#i-expand"></use></svg></span>
+              <span class="sr-only">View larger</span>
+            </button>
+            <figcaption>A walk-in shower with a sliding glass door, a gray shaker vanity, and a backlit mirror.</figcaption>
+          </figure>
+        </div>
+        <div class="build">
+          <p class="build-label">How we built it</p>
+          <ol class="build-steps is-landscape">
+            <li class="build-step">
+              <button class="shot-open" type="button" data-gallery="bath2" data-lightbox="1" data-full="bath2-backer-1600.jpg" data-caption="Step 1, walls and a waterproof base: waterproof backer board in the shower, mold-resistant drywall on the other walls, and a sealed shower base and curb.">
+                <img src="bath2-backer-960.jpg" srcset="bath2-backer-960.jpg 960w, bath2-backer-1600.jpg 1600w" sizes="(min-width: 640px) 30vw, 140px" width="1600" height="1200" loading="lazy" alt="Waterproof backer board on the shower walls, a sealed shower base and curb around the drain, and green mold-resistant drywall on the rest of the room">
+                <span class="sr-only">View larger</span>
+              </button>
+              <div class="build-text">
+                <p class="build-num">Step 1</p>
+                <h4>Walls and a waterproof base</h4>
+                <p>Waterproof backer board in the shower, mold-resistant drywall on the other walls, and a sealed shower base and curb.</p>
+              </div>
+            </li>
+            <li class="build-step">
+              <button class="shot-open" type="button" data-gallery="bath2" data-lightbox="2" data-full="bath2-shower-1600.jpg" data-caption="Step 2, shower tile: large marble-look wall tile, a hexagon mosaic floor, and a niche with a hexagon tile back.">
+                <img src="bath2-shower-960.jpg" srcset="bath2-shower-960.jpg 960w, bath2-shower-1600.jpg 1600w" sizes="(min-width: 640px) 30vw, 140px" width="1600" height="1200" loading="lazy" alt="The shower tiled in large white marble-look tile with gray veins, a hexagon mosaic floor, and a recessed niche">
+                <span class="sr-only">View larger</span>
+              </button>
+              <div class="build-text">
+                <p class="build-num">Step 2</p>
+                <h4>Shower tile</h4>
+                <p>Large marble-look wall tile, a hexagon mosaic floor, and a built-in niche.</p>
+              </div>
+            </li>
+            <li class="build-step">
+              <button class="shot-open" type="button" data-gallery="bath2" data-lightbox="3" data-full="bath2-floor-1600.jpg" data-caption="Step 3, floor tile: large marble-look floor tile, set flat with a leveling system.">
+                <img src="bath2-floor-960.jpg" srcset="bath2-floor-960.jpg 960w, bath2-floor-1600.jpg 1600w" sizes="(min-width: 640px) 30vw, 140px" width="1600" height="1200" loading="lazy" alt="Large marble-look floor tiles being set with yellow leveling clips, next to the tiled shower curb">
+                <span class="sr-only">View larger</span>
+              </button>
+              <div class="build-text">
+                <p class="build-num">Step 3</p>
+                <h4>Floor tile</h4>
+                <p>Large marble-look floor tile, set flat with a leveling system.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </article>
+
+      <section class="project" aria-labelledby="project-more-title">
+        <div class="project-head">
+          <p class="eyebrow">More projects</p>
+          <h3 class="project-title" id="project-more-title">Floors, Stairs, and Basement Work</h3>
+          <p class="project-summary">A kitchen floor repaired from the subfloor up, a bedroom and a staircase redone in vinyl plank, and a basement build-out we’re working on now.</p>
+        </div>
+        <ul class="mini-grid">
+          <li class="mini-card">
+            <div class="mini-pair">
+              <button class="shot-open" type="button" data-gallery="kitchen" data-lightbox="0" data-full="kitchen-hole-1600.jpg" data-caption="Before: a hole through the kitchen subfloor, with damaged wood around it.">
+                <img src="kitchen-hole-480.jpg" srcset="kitchen-hole-480.jpg 480w, kitchen-hole-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1201" loading="lazy" alt="Before: a hole broken through an old kitchen subfloor, with splintered, damaged wood and debris around it">
+                <span class="shot-tag">Before</span>
+                <span class="sr-only">View larger</span>
+              </button>
+              <button class="shot-open shot-after" type="button" data-gallery="kitchen" data-lightbox="2" data-full="kitchen-after-1600.jpg" data-caption="After: new vinyl plank flooring across the kitchen.">
+                <img src="kitchen-after-480.jpg" srcset="kitchen-after-480.jpg 480w, kitchen-after-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="After: new gray-brown vinyl plank flooring in a kitchen with wood cabinets, a dishwasher, and a stainless refrigerator">
+                <span class="shot-tag">After</span>
+                <span class="sr-only">View larger</span>
+              </button>
+              <button class="shot-open" type="button" hidden data-gallery="kitchen" data-lightbox="1" data-full="kitchen-demo-1600.jpg" data-alt="Old kitchen flooring layers torn up, with a hammer and scraper on the exposed subfloor" data-caption="The old flooring layers pulled up, down to the damaged subfloor."></button>
+              <button class="shot-open" type="button" hidden data-gallery="kitchen" data-lightbox="3" data-full="kitchen-nook-1600.jpg" data-alt="New vinyl plank flooring with white baseboard in a kitchen nook, next to an older patterned floor in the hallway" data-caption="After: the new floor continues into the kitchen nook."></button>
+            </div>
+            <div class="mini-body">
+              <h4>Kitchen Floor, Repaired From the Subfloor Up</h4>
+              <p>The old floor had a hole through the subfloor. We pulled up the old layers, repaired the subfloor, and installed new vinyl plank flooring.</p>
+              <button class="mini-more" type="button" data-open-gallery="kitchen">
+                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-expand"></use></svg>
+                See all 4 photos<span class="sr-only"> of the kitchen floor</span>
+              </button>
+            </div>
+          </li>
+          <li class="mini-card">
+            <div class="mini-pair">
+              <button class="shot-open" type="button" data-gallery="bedroom" data-lightbox="0" data-full="bedroom-before-1600.jpg" data-caption="Before: stained carpet and worn yellow walls.">
+                <img src="bedroom-before-480.jpg" srcset="bedroom-before-480.jpg 480w, bedroom-before-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="Before: a bedroom with stained beige carpet, cream walls, and two closets">
+                <span class="shot-tag">Before</span>
+                <span class="sr-only">View larger</span>
+              </button>
+              <button class="shot-open shot-after" type="button" data-gallery="bedroom" data-lightbox="2" data-full="bedroom-after-1600.jpg" data-caption="After: vinyl plank flooring, fresh paint, and new baseboard.">
+                <img src="bedroom-after-480.jpg" srcset="bedroom-after-480.jpg 480w, bedroom-after-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="After: the same bedroom with dark vinyl plank flooring, light gray walls, white baseboard, and two closets with white sliding doors">
+                <span class="shot-tag">After</span>
+                <span class="sr-only">View larger</span>
+              </button>
+              <button class="shot-open" type="button" hidden data-gallery="bedroom" data-lightbox="1" data-full="bedroom-before2-1600.jpg" data-alt="A corner of the bedroom with stained carpet and baseboard heaters" data-caption="Before: the carpet was stained throughout the room."></button>
+              <button class="shot-open" type="button" hidden data-gallery="bedroom" data-lightbox="3" data-full="bedroom-after2-1600.jpg" data-alt="A bedroom corner after the work, with dark vinyl plank flooring, freshly painted walls, and white baseboard heaters under a window" data-caption="After: the new floor runs cleanly along the baseboard heaters."></button>
+            </div>
+            <div class="mini-body">
+              <h4>Bedroom, Carpet to New Floors</h4>
+              <p>We replaced stained carpet with vinyl plank flooring, painted the walls, and added new baseboard trim.</p>
+              <button class="mini-more" type="button" data-open-gallery="bedroom">
+                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-expand"></use></svg>
+                See all 4 photos<span class="sr-only"> of the bedroom</span>
+              </button>
+            </div>
+          </li>
+          <li class="mini-card">
+            <div class="mini-pair">
+              <button class="shot-open" type="button" data-gallery="stairs" data-lightbox="0" data-full="stairs-before-1200.jpg" data-caption="Before: worn carpet on every step.">
+                <img src="stairs-before-thumb-480.jpg" srcset="stairs-before-thumb-480.jpg 480w, stairs-before-thumb-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="960" height="720" loading="lazy" alt="Before: a long, narrow staircase covered in worn beige carpet, with tools resting on the steps">
+                <span class="shot-tag">Before</span>
+                <span class="sr-only">View larger</span>
+              </button>
+              <button class="shot-open shot-after" type="button" data-gallery="stairs" data-lightbox="1" data-full="stairs-after-1200.jpg" data-caption="After: dark vinyl plank treads with white risers.">
+                <img src="stairs-after-thumb-480.jpg" srcset="stairs-after-thumb-480.jpg 480w, stairs-after-thumb-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="960" height="720" loading="lazy" alt="After: the same staircase with dark brown vinyl plank treads and white risers">
+                <span class="shot-tag">After</span>
+                <span class="sr-only">View larger</span>
+              </button>
+            </div>
+            <div class="mini-body">
+              <h4>Stairs, Carpet to Vinyl Treads</h4>
+              <p>We pulled up the worn carpet and installed dark vinyl plank treads with clean white risers.</p>
+              <button class="mini-more" type="button" data-open-gallery="stairs">
+                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-expand"></use></svg>
+                See both photos<span class="sr-only"> of the stairs</span>
+              </button>
+            </div>
+          </li>
+          <li class="mini-card">
+            <div class="mini-pair">
+              <button class="shot-open" type="button" data-gallery="basement" data-lightbox="0" data-full="basement-before-1600.jpg" data-caption="Before: the old foundation wall was crumbling, with loose patches and peeling paint.">
+                <img src="basement-before-480.jpg" srcset="basement-before-480.jpg 480w, basement-before-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="Before: a crumbling old basement foundation wall with peeling paint, a small window, exposed wiring, and drain pipes">
+                <span class="shot-tag">Before</span>
+                <span class="sr-only">View larger</span>
+              </button>
+              <button class="shot-open shot-progress" type="button" data-gallery="basement" data-lightbox="4" data-full="basement-progress-1600.jpg" data-caption="In progress: new walls, a new ceiling, and three new doors.">
+                <img src="basement-progress-480.jpg" srcset="basement-progress-480.jpg 480w, basement-progress-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="In progress: the basement with new gray drywall walls, a new ceiling, and three new white six-panel doors">
+                <span class="shot-tag">In progress</span>
+                <span class="sr-only">View larger</span>
+              </button>
+              <button class="shot-open" type="button" hidden data-gallery="basement" data-lightbox="1" data-full="basement-before2-1600.jpg" data-alt="A wider view of the old basement wall, with crumbling cement, drain pipes, and the electrical panel area" data-caption="Before: more of the wall, with crumbling cement and loose patches."></button>
+              <button class="shot-open" type="button" hidden data-gallery="basement" data-lightbox="2" data-full="basement-parge-close-1600.jpg" data-alt="Close-up of a fresh, smooth coat of cement on the basement wall below the window" data-caption="A fresh coat of cement going on over the old wall."></button>
+              <button class="shot-open" type="button" hidden data-gallery="basement" data-lightbox="3" data-full="basement-parge-1600.jpg" data-alt="The basement wall under the window covered in a new coat of cement, next to an older blue-painted section" data-caption="The wall under the window, resurfaced with new cement."></button>
+            </div>
+            <div class="mini-body">
+              <h4>Basement Build-Out</h4>
+              <p>Still in progress. We resurfaced the crumbling foundation walls with fresh cement, then put up new walls and a ceiling and installed three new doors.</p>
+              <button class="mini-more" type="button" data-open-gallery="basement">
+                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-expand"></use></svg>
+                See all 5 photos<span class="sr-only"> of the basement</span>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <div class="work-cta">
+        <a class="btn btn-navy" href="#estimate">Plan your project <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        <p class="work-more">More projects coming soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-mist" id="process" aria-labelledby="process-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title" id="process-title">Our Simple Process</h2>
+      </div>
+      <ol class="process">
+        <li class="step">
+          <span class="step-num" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>Tell Us About Your Project</h3>
+            <p>Share your ideas, needs, and timeline with our team.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Receive Your Estimate</h3>
+            <p>Get a clear, detailed, and competitive estimate.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">3</span>
+          <div class="step-body">
+            <h3>Bring Your Vision to Life</h3>
+            <p>Our skilled team gets to work, delivering quality results you’ll love.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="area-band" aria-label="Service area">
+    <div class="wrap area-inner">
+      <p class="area-text">
+        <svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>
+        <span>Proudly serving Long Island, Queens, Brooklyn, and surrounding communities.</span>
+      </p>
+      <p class="area-phone">
+        <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
+        <a href="tel:+17186967379">(718) 696-7379</a>
+      </p>
+      <a class="btn btn-gold" href="#estimate">Get a Free Estimate <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+    </div>
+  </section>
+
+  <section class="section estimate" id="estimate" aria-labelledby="estimate-title">
+    <div class="wrap estimate-inner">
+      <div class="estimate-info">
+        <p class="eyebrow">Contact</p>
+        <h2 id="estimate-title">Get a Free Estimate</h2>
+        <p>Tell us about your project and how to reach you. We’ll get back to you to talk it through and plan your free estimate.</p>
+        <div class="contact-card">
+          <p class="contact-label">Call or text</p>
+          <p class="contact-phone"><a id="contact-phone-number" href="tel:+17186967379">(718) 696-7379</a></p>
+          <button class="btn btn-quiet" type="button" data-copy="(718) 696-7379" data-copy-target="contact-phone-number">
+            <svg class="icon icon-sm" aria-hidden="true"><use href="#i-copy"></use></svg>
+            <span class="btn-label">Copy number</span>
+          </button>
+          <div class="contact-divider" role="presentation"></div>
+          <p class="contact-label">Service area</p>
+          <p class="area-list">Brooklyn, Queens, Nassau County, Suffolk County, and surrounding communities.</p>
+        </div>
+      </div>
+
+      <div class="estimate-panel" id="estimate-panel">
+        <form class="form" id="estimate-form" novalidate aria-labelledby="form-title">
+          <h3 class="form-title" id="form-title">Tell us about your project</h3>
+          <p class="form-note">Fields marked <span class="req" aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="est-name">Full name <span class="req" aria-hidden="true">*</span></label>
+              <input id="est-name" name="name" type="text" autocomplete="name" required aria-describedby="est-name-error">
+              <p class="field-error" id="est-name-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="est-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+              <input id="est-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(718) 555-0123" aria-describedby="est-phone-error">
+              <p class="field-error" id="est-phone-error" hidden></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="est-email">Email <span class="optional">(optional)</span></label>
+            <input id="est-email" name="email" type="email" autocomplete="email" aria-describedby="est-email-error">
+            <p class="field-error" id="est-email-error" hidden></p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="est-area">Project location <span class="req" aria-hidden="true">*</span></label>
+              <select id="est-area" name="area" required aria-describedby="est-area-error">
+                <option value="">Choose an area</option>
+                <option>Brooklyn</option>
+                <option>Queens</option>
+                <option>Nassau County (Long Island)</option>
+                <option>Suffolk County (Long Island)</option>
+                <option>Another nearby area</option>
+              </select>
+              <p class="field-error" id="est-area-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="est-service">Type of work <span class="req" aria-hidden="true">*</span></label>
+              <select id="est-service" name="service" required aria-describedby="est-service-error">
+                <option value="">Choose a service</option>
+                <option>Bathroom Renovations</option>
+                <option>Tile Installation</option>
+                <option>Flooring Installation</option>
+                <option>Kitchen Improvements</option>
+                <option>Carpentry</option>
+                <option>Framing &amp; Drywall</option>
+                <option>Painting</option>
+                <option>General Repairs &amp; Maintenance</option>
+                <option>Something else</option>
+              </select>
+              <p class="field-error" id="est-service-error" hidden></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="est-details">Project details <span class="optional">(optional)</span></label>
+            <textarea id="est-details" name="details" rows="5" maxlength="1200" placeholder="What would you like done? Rough size, timeline, anything we should know."></textarea>
+          </div>
+          <fieldset class="field">
+            <legend>Best way to reach you</legend>
+            <div class="choice-row">
+              <input type="radio" id="contact-call" name="contact" value="Call" checked>
+              <label for="contact-call">Call</label>
+              <input type="radio" id="contact-text" name="contact" value="Text">
+              <label for="contact-text">Text</label>
+              <input type="radio" id="contact-email" name="contact" value="Email">
+              <label for="contact-email">Email</label>
+            </div>
+          </fieldset>
+          <button class="btn btn-gold btn-block" type="submit">Review my request</button>
+          <p class="form-fine">Next, you’ll send your request to us by text message.</p>
+        </form>
+
+        <div class="result" id="estimate-result" hidden>
+          <h3 class="form-title" id="result-title" tabindex="-1">Your request is ready to send</h3>
+          <p class="result-help">Tap <strong>Send by text</strong> to open your messages app with everything filled in, then press send. If it doesn’t open, copy your request and text it to (718) 696-7379.</p>
+          <pre class="result-preview" id="result-preview"></pre>
+          <div class="result-actions">
+            <a class="btn btn-gold" id="result-sms" href="sms:+17186967379">
+              <svg class="icon icon-sm" aria-hidden="true"><use href="#i-message"></use></svg>
+              Send by text
+            </a>
+            <button class="btn btn-outline" id="result-copy" type="button">
+              <svg class="icon icon-sm" aria-hidden="true"><use href="#i-copy"></use></svg>
+              <span class="btn-label">Copy request</span>
+            </button>
+          </div>
+          <p class="result-call">Prefer to call? <a href="tel:+17186967379">(718) 696-7379</a></p>
+          <button class="link-btn" id="result-edit" type="button">Edit my request</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="lightbox" id="lightbox" aria-label="Project photos">
+  <div class="lightbox-inner">
+    <img class="lightbox-img" id="lightbox-img" src="bath-after-600.jpg" loading="lazy" alt="">
+    <div class="lightbox-bar">
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+      <div class="lightbox-controls">
+        <button class="lb-btn" type="button" id="lb-prev" aria-label="Previous photo"><svg class="icon" aria-hidden="true"><use href="#i-chev-left"></use></svg></button>
+        <span class="lb-count" id="lb-count" aria-live="polite"></span>
+        <button class="lb-btn" type="button" id="lb-next" aria-label="Next photo"><svg class="icon" aria-hidden="true"><use href="#i-chev-right"></use></svg></button>
+        <button class="lb-btn" type="button" id="lb-close" aria-label="Close photos" autofocus><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <p class="footer-wordmark">KONBIT</p>
+      <p class="footer-sub">Home Services</p>
+      <p class="footer-motto" lang="ht">Men anpil, chay pa lou</p>
+      <p class="footer-motto-en">Many hands, light work.</p>
+    </div>
+    <div class="footer-contact">
+      <h2 class="footer-heading">Contact</h2>
+      <p class="footer-line footer-phone">
+        <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
+        <a href="tel:+17186967379">(718) 696-7379</a>
+      </p>
+      <p class="footer-line footer-area">
+        <svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>
+        <span><strong>Service area</strong>Long Island, Queens, Brooklyn, and surrounding communities.</span>
+      </p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <h2 class="footer-heading">Quick links</h2>
+      <ul>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#estimate">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="footer-bottom">© <span id="year">2026</span> Konbit Home Services. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var PHONE_SMS = '+17186967379';
+  var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* Menus */
+  var header = document.querySelector('.site-header');
+  var menuBtn = document.getElementById('menu-toggle');
+  var menuLabel = menuBtn.querySelector('.sr-only');
+  var svcBtn = document.getElementById('services-toggle');
+  var svcMenu = document.getElementById('services-menu');
+
+  function setMenu(open) {
+    header.setAttribute('data-menu', open ? 'open' : 'closed');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuLabel.textContent = open ? 'Close menu' : 'Open menu';
+  }
+  function setServices(open) {
+    svcMenu.hidden = !open;
+    svcBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  menuBtn.addEventListener('click', function () {
+    setMenu(header.getAttribute('data-menu') !== 'open');
+  });
+  svcBtn.addEventListener('click', function () {
+    setServices(svcMenu.hidden);
+  });
+  document.addEventListener('click', function (e) {
+    if (!svcMenu.hidden && !e.target.closest('.nav-dropdown')) setServices(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (!svcMenu.hidden) { setServices(false); svcBtn.focus(); }
+    else if (header.getAttribute('data-menu') === 'open') { setMenu(false); menuBtn.focus(); }
+  });
+  Array.prototype.forEach.call(header.querySelectorAll('.nav-panel a'), function (a) {
+    a.addEventListener('click', function () { setServices(false); setMenu(false); });
+  });
+
+  /* Highlight the menu item for the section in view */
+  var sectionToNav = { top: 'top', services: 'services', about: 'about', why: 'about', work: 'work', process: 'work', estimate: 'estimate' };
+  var navItems = Array.prototype.slice.call(document.querySelectorAll('.nav-list [data-section]'));
+  function markCurrent(key) {
+    navItems.forEach(function (el) { el.classList.toggle('is-current', el.getAttribute('data-section') === key); });
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) markCurrent(sectionToNav[en.target.id]); });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    Object.keys(sectionToNav).forEach(function (id) {
+      var s = document.getElementById(id);
+      if (s) io.observe(s);
+    });
+  }
+
+  /* Copy helpers */
+  function selectNode(el) {
+    if (!el) return;
+    if (typeof el.select === 'function') { el.focus(); el.select(); return; }
+    var range = document.createRange();
+    range.selectNodeContents(el);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+  function flash(btn, text) {
+    var label = btn.querySelector('.btn-label');
+    if (!label) return;
+    if (!btn.getAttribute('data-label')) btn.setAttribute('data-label', label.textContent);
+    label.textContent = text;
+    clearTimeout(btn._timer);
+    btn._timer = setTimeout(function () { label.textContent = btn.getAttribute('data-label'); }, 2600);
+  }
+  function copyText(text, btn, fallbackEl) {
+    function done() { flash(btn, 'Copied'); }
+    function fail() { selectNode(fallbackEl); flash(btn, 'Selected. Copy it now'); }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fail);
+      } else { fail(); }
+    } catch (err) { fail(); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'), function (btn) {
+    btn.addEventListener('click', function () {
+      copyText(btn.getAttribute('data-copy'), btn, document.getElementById(btn.getAttribute('data-copy-target')));
+    });
+  });
+
+  /* Estimate form */
+  var form = document.getElementById('estimate-form');
+  var result = document.getElementById('estimate-result');
+  var preview = document.getElementById('result-preview');
+  var smsLink = document.getElementById('result-sms');
+  var resultTitle = document.getElementById('result-title');
+  var copyBtn = document.getElementById('result-copy');
+  var f = {
+    name: document.getElementById('est-name'),
+    phone: document.getElementById('est-phone'),
+    email: document.getElementById('est-email'),
+    area: document.getElementById('est-area'),
+    service: document.getElementById('est-service'),
+    details: document.getElementById('est-details')
+  };
+
+  function setError(input, msg) {
+    var err = document.getElementById(input.id + '-error');
+    if (!err) return;
+    if (msg) {
+      err.textContent = msg;
+      err.hidden = false;
+      input.setAttribute('aria-invalid', 'true');
+    } else {
+      err.textContent = '';
+      err.hidden = true;
+      input.removeAttribute('aria-invalid');
+    }
+  }
+  function phoneDigits(v) {
+    var d = String(v || '').replace(/\D/g, '');
+    if (d.length === 11 && d.charAt(0) === '1') d = d.slice(1);
+    return d;
+  }
+  function prettyPhone(d) {
+    return '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
+  }
+  function contactMethod() {
+    var c = form.querySelector('input[name="contact"]:checked');
+    return c ? c.value : 'Call';
+  }
+  function validate() {
+    var first = null;
+    function check(input, ok, msg) {
+      setError(input, ok ? '' : msg);
+      if (!ok && !first) first = input;
+    }
+    check(f.name, f.name.value.trim().length > 0, 'Enter your name.');
+    check(f.phone, phoneDigits(f.phone.value).length === 10, 'Enter a 10-digit phone number, like (718) 555-0123.');
+    var email = f.email.value.trim();
+    var needEmail = contactMethod() === 'Email' && !email;
+    var emailOk = !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    check(f.email, emailOk && !needEmail, needEmail ? 'Add your email so we can write back.' : 'Check the email address, or leave it blank.');
+    check(f.area, !!f.area.value, 'Choose where the project is.');
+    check(f.service, !!f.service.value, 'Choose the type of work.');
+    return first;
+  }
+  function compose() {
+    var lines = ['Estimate request for Konbit Home Services', ''];
+    lines.push('Name: ' + f.name.value.trim());
+    lines.push('Phone: ' + prettyPhone(phoneDigits(f.phone.value)));
+    var email = f.email.value.trim();
+    if (email) lines.push('Email: ' + email);
+    lines.push('Project location: ' + f.area.value);
+    lines.push('Type of work: ' + f.service.value);
+    var details = f.details.value.trim();
+    if (details) lines.push('', 'Project details:', details);
+    lines.push('', 'Best way to reach me: ' + contactMethod());
+    return lines.join('\n');
+  }
+  function showForm(focusName) {
+    result.hidden = true;
+    form.hidden = false;
+    if (focusName) f.name.focus();
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var first = validate();
+    if (first) { first.focus(); return; }
+    var msg = compose();
+    preview.textContent = msg;
+    smsLink.setAttribute('href', 'sms:' + PHONE_SMS + '?&body=' + encodeURIComponent(msg));
+    form.hidden = true;
+    result.hidden = false;
+    resultTitle.focus();
+  });
+  form.addEventListener('input', function (e) {
+    if (e.target.getAttribute && e.target.getAttribute('aria-invalid') === 'true') setError(e.target, '');
+  });
+  form.addEventListener('change', function (e) {
+    if (e.target.name === 'contact') { setError(f.email, ''); return; }
+    if (e.target.getAttribute && e.target.getAttribute('aria-invalid') === 'true') setError(e.target, '');
+  });
+  copyBtn.addEventListener('click', function () { copyText(preview.textContent, copyBtn, preview); });
+  document.getElementById('result-edit').addEventListener('click', function () { showForm(true); });
+
+  /* "Get an estimate" on a service card picks that service in the form */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-estimate-service]'), function (link) {
+    link.addEventListener('click', function () {
+      f.service.value = link.getAttribute('data-estimate-service');
+      setError(f.service, '');
+      showForm(false);
+      setTimeout(function () {
+        try { f.name.focus({ preventScroll: true }); } catch (err) { f.name.focus(); }
+      }, reduceMotion ? 60 : 650);
+    });
+  });
+
+  /* Photo viewer: flips through one project's photos, in build order */
+  var lb = document.getElementById('lightbox');
+  var shots = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox]'));
+  if (lb && typeof lb.showModal === 'function' && shots.length) {
+    var lbImg = document.getElementById('lightbox-img');
+    var lbCap = document.getElementById('lightbox-caption');
+    var lbCount = document.getElementById('lb-count');
+    var group = shots;
+    var current = 0;
+    var galleryOf = function (name) {
+      return shots.filter(function (s) { return s.getAttribute('data-gallery') === name; })
+        .sort(function (a, b) { return Number(a.getAttribute('data-lightbox')) - Number(b.getAttribute('data-lightbox')); });
+    };
+    var showShot = function (i) {
+      current = (i + group.length) % group.length;
+      var s = group[current];
+      var thumb = s.querySelector('img');
+      lbImg.src = s.getAttribute('data-full');
+      lbImg.alt = s.getAttribute('data-alt') || (thumb ? thumb.alt : '');
+      lbCap.textContent = s.getAttribute('data-caption') || '';
+      lbCount.textContent = (current + 1) + ' / ' + group.length;
+    };
+    var openGallery = function (name, shot) {
+      group = galleryOf(name);
+      if (!group.length) return;
+      showShot(shot ? Math.max(0, group.indexOf(shot)) : 0);
+      try { lb.showModal(); } catch (err) { /* already open */ }
+    };
+    shots.forEach(function (s) {
+      s.addEventListener('click', function () { openGallery(s.getAttribute('data-gallery'), s); });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-open-gallery]'), function (btn) {
+      btn.addEventListener('click', function () { openGallery(btn.getAttribute('data-open-gallery')); });
+    });
+    document.getElementById('lb-prev').addEventListener('click', function () { showShot(current - 1); });
+    document.getElementById('lb-next').addEventListener('click', function () { showShot(current + 1); });
+    document.getElementById('lb-close').addEventListener('click', function () { lb.close(); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+    lb.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); showShot(current - 1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); showShot(current + 1); }
+    });
+  } else {
+    shots.forEach(function (s) { s.style.cursor = 'default'; });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-open-gallery]'), function (b) { b.hidden = true; });
+  }
+})();
+</script>
+</body>
+</html>
