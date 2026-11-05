@@ -869,7 +869,7 @@ picture { display: contents; }
 .service-card h3 a { color: inherit; text-decoration: none; }
 .service-card h3 a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
 .service-card:hover .card-link { color: var(--gold-ink); }
-.card-link { display: inline-flex; }
+.card-link { position: relative; z-index: 1; display: inline-flex; }
 
 /* Before/after project cards (homepage and service pages) */
 .proj-grid { list-style: none; display: grid; gap: 1.25rem; grid-template-columns: minmax(0, 1fr); }
@@ -898,7 +898,11 @@ picture { display: contents; }
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 1rem;
   margin-top: auto; padding-top: .35rem; border-top: 1px solid var(--rule);
 }
-.pc-more { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; font-weight: 700; font-size: .95rem; color: var(--navy); }
+.pc-more {
+  position: relative; z-index: 2; display: inline-flex; align-items: center; gap: .4rem; min-height: 44px;
+  font-weight: 700; font-size: .95rem; color: var(--navy); text-decoration: none;
+}
+.pc-more:hover { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
 .proj-card:hover .pc-more { color: var(--gold-ink); }
 .pc-similar {
   position: relative; z-index: 2; display: inline-flex; align-items: center; min-height: 44px;
