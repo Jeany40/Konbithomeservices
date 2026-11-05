@@ -266,12 +266,14 @@
         signal: controller ? controller.signal : undefined
       }).then(function (res) {
         return res.json().catch(function () { return null; }).then(function (json) {
-          var ok = res.status === 200 && !(json && json.success === false);
-          if (!ok && window.console) console.warn('Estimate request was not sent:', res.status, json && json.message);
+          // Only Web3Forms' explicit confirmation ({"success": true}) counts as sent. Anything else, even an
+          // HTTP 200 with an empty or unreadable body, offers the text backup so no request is lost.
+          var ok = res.status === 200 && json !== null && typeof json === 'object' && json.success === true;
+          if (!ok && window.console) console.warn('Estimate request was not confirmed:', res.status, json && json.message);
           return ok;
         });
       }, function (err) {
-        if (window.console) console.warn('Estimate request was not sent:', err);
+        if (window.console) console.warn('Estimate request was not confirmed:', err);
         return false;
       }).then(function (ok) {
         clearTimeout(timer);
