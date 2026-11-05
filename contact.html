@@ -148,47 +148,36 @@
           </div>
 
           <div class="form-body">
-            <fieldset class="field" id="est-service" aria-describedby="est-service-error">
-              <legend>What do you need done?</legend>
-              <p class="field-error" id="est-service-error" hidden></p>
-              <div class="pick-grid">
-                <input type="radio" id="svc-bathroom" name="service" value="Bathroom Renovations" required>
-                <label class="pick" for="svc-bathroom"><svg class="icon" aria-hidden="true"><use href="#i-bath"></use></svg><span>Bathrooms</span></label>
-                <input type="radio" id="svc-tile" name="service" value="Tile Installation">
-                <label class="pick" for="svc-tile"><svg class="icon" aria-hidden="true"><use href="#i-tile"></use></svg><span>Tile</span></label>
-                <input type="radio" id="svc-flooring" name="service" value="Flooring Installation">
-                <label class="pick" for="svc-flooring"><svg class="icon" aria-hidden="true"><use href="#i-floor"></use></svg><span>Flooring</span></label>
-                <input type="radio" id="svc-kitchen" name="service" value="Kitchen Improvements">
-                <label class="pick" for="svc-kitchen"><svg class="icon" aria-hidden="true"><use href="#i-kitchen"></use></svg><span>Kitchens</span></label>
-                <input type="radio" id="svc-carpentry" name="service" value="Carpentry">
-                <label class="pick" for="svc-carpentry"><svg class="icon" aria-hidden="true"><use href="#i-square"></use></svg><span>Carpentry</span></label>
-                <input type="radio" id="svc-framing" name="service" value="Framing &amp; Drywall">
-                <label class="pick" for="svc-framing"><svg class="icon" aria-hidden="true"><use href="#i-studs"></use></svg><span>Framing &amp; Drywall</span></label>
-                <input type="radio" id="svc-painting" name="service" value="Painting">
-                <label class="pick" for="svc-painting"><svg class="icon" aria-hidden="true"><use href="#i-roller"></use></svg><span>Painting</span></label>
-                <input type="radio" id="svc-repairs" name="service" value="General Repairs &amp; Maintenance">
-                <label class="pick" for="svc-repairs"><svg class="icon" aria-hidden="true"><use href="#i-toolbox"></use></svg><span>Repairs</span></label>
-                <input type="radio" id="svc-other" name="service" value="Something else">
-                <label class="pick pick-other" for="svc-other"><svg class="icon" aria-hidden="true"><use href="#i-chat"></use></svg><span>Something else</span></label>
+            <div class="field-row">
+              <div class="field">
+                <label for="est-service">What do you need done?</label>
+                <p class="field-error" id="est-service-error" hidden></p>
+                <select id="est-service" name="service" required aria-describedby="est-service-error">
+                  <option value="">Choose a service</option>
+                  <option>Bathroom Renovations</option>
+                  <option>Tile Installation</option>
+                  <option>Flooring Installation</option>
+                  <option>Kitchen Improvements</option>
+                  <option>Carpentry</option>
+                  <option>Framing &amp; Drywall</option>
+                  <option>Painting</option>
+                  <option>General Repairs &amp; Maintenance</option>
+                  <option>Something else</option>
+                </select>
               </div>
-            </fieldset>
-
-            <fieldset class="field" id="est-area" aria-describedby="est-area-error">
-              <legend>Where is the project?</legend>
-              <p class="field-error" id="est-area-error" hidden></p>
-              <div class="choice-row">
-                <input type="radio" id="area-brooklyn" name="area" value="Brooklyn" required>
-                <label for="area-brooklyn">Brooklyn</label>
-                <input type="radio" id="area-queens" name="area" value="Queens">
-                <label for="area-queens">Queens</label>
-                <input type="radio" id="area-nassau" name="area" value="Nassau County (Long Island)">
-                <label for="area-nassau">Nassau County</label>
-                <input type="radio" id="area-suffolk" name="area" value="Suffolk County (Long Island)">
-                <label for="area-suffolk">Suffolk County</label>
-                <input type="radio" id="area-other" name="area" value="Another nearby area">
-                <label for="area-other">Somewhere else nearby</label>
+              <div class="field">
+                <label for="est-area">Where is the project?</label>
+                <p class="field-error" id="est-area-error" hidden></p>
+                <select id="est-area" name="area" required aria-describedby="est-area-error">
+                  <option value="">Choose an area</option>
+                  <option>Brooklyn</option>
+                  <option>Queens</option>
+                  <option>Nassau County (Long Island)</option>
+                  <option>Suffolk County (Long Island)</option>
+                  <option>Another nearby area</option>
+                </select>
               </div>
-            </fieldset>
+            </div>
 
             <div class="field">
               <label for="est-details">Project details <span class="optional">(optional)</span></label>
@@ -217,13 +206,10 @@
             </div>
             <fieldset class="field">
               <legend>How should we reach you?</legend>
-              <div class="segmented">
-                <input type="radio" id="contact-call" name="contact" value="Call" checked>
-                <label for="contact-call"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"></use></svg>Call</label>
-                <input type="radio" id="contact-text" name="contact" value="Text">
-                <label for="contact-text"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-message"></use></svg>Text</label>
-                <input type="radio" id="contact-email" name="contact" value="Email">
-                <label for="contact-email"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail"></use></svg>Email</label>
+              <div class="radio-row">
+                <label class="radio" for="contact-call"><input type="radio" id="contact-call" name="contact" value="Call" checked>Call</label>
+                <label class="radio" for="contact-text"><input type="radio" id="contact-text" name="contact" value="Text">Text</label>
+                <label class="radio" for="contact-email"><input type="radio" id="contact-email" name="contact" value="Email">Email</label>
               </div>
             </fieldset>
 

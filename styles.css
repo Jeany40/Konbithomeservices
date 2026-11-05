@@ -594,68 +594,48 @@ html.menu-locked, html.menu-locked body { overflow: hidden; }
 .field legend { padding: 0 0 .6rem; }
 .optional { font-weight: 400; color: var(--muted); }
 .field-hint { margin-top: -.15rem; font-size: .9rem; color: var(--muted); }
-.field input[type="text"], .field input[type="tel"], .field input[type="email"], .field textarea {
-  width: 100%; min-height: 50px; padding: .75rem .9rem;
+/* Quiet filled fields: a soft panel with an underline, outlined only while you type in one */
+.field input[type="text"], .field input[type="tel"], .field input[type="email"], .field select, .field textarea {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; min-height: 52px; padding: .8rem .95rem;
   font: 400 1rem/1.4 var(--font-body); color: var(--ink);
-  background: var(--paper);
-  border: 1px solid var(--field-border); border-radius: var(--radius);
+  background-color: var(--mist);
+  border: 1px solid transparent; border-bottom-color: var(--field-border);
+  border-radius: var(--radius) var(--radius) 0 0;
 }
+.field select {
+  padding-right: 2.75rem; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B2545' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right .9rem center; background-size: 18px;
+}
+.field select:invalid { color: var(--placeholder); }
+.field select option { color: var(--ink); }
 .field textarea { min-height: 116px; resize: vertical; }
 .field ::placeholder { color: var(--placeholder); opacity: 1; }
-.field input:hover, .field textarea:hover { border-color: var(--navy); }
-.field input:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--navy); outline-offset: 1px; border-color: var(--navy); }
-.field [aria-invalid="true"] { border-color: var(--error); background: var(--error-bg); }
+.field :is(input[type="text"], input[type="tel"], input[type="email"], select, textarea):hover { border-bottom-color: var(--navy); }
+.field :is(input[type="text"], input[type="tel"], input[type="email"], select, textarea):focus {
+  outline: 2px solid transparent;
+  background-color: var(--paper);
+  border-color: var(--navy);
+  box-shadow: inset 0 -1px 0 var(--navy);
+}
+.field [aria-invalid="true"] { background-color: var(--error-bg); border-bottom-color: var(--error); box-shadow: inset 0 -1px 0 var(--error); }
 .field-error { color: var(--error); font-size: .9rem; font-weight: 600; }
 
-/* Choices are real radio buttons, hidden behind their labels */
-.pick-grid input, .choice-row input, .segmented input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-
-/* Type of work: the site's service icons as tappable tiles */
-.pick-grid { display: grid; gap: .6rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.pick-grid .pick-other { grid-column: 1 / -1; }
-@container estimate (min-width: 34rem) {
-  .pick-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .pick-grid .pick-other { grid-column: auto; }
-}
-.pick {
-  display: flex; align-items: center; gap: .7rem;
-  min-height: 58px; padding: .6rem .8rem;
-  background: var(--paper); border: 1px solid var(--field-border); border-radius: var(--radius);
-  color: var(--navy); font-weight: 600; font-size: .95rem; line-height: 1.2;
+/* Call / Text / Email: plain round radio buttons */
+.radio-row { display: flex; flex-wrap: wrap; gap: .25rem 2rem; }
+.field .radio { display: inline-flex; align-items: center; gap: .65rem; min-height: 44px; font-weight: 500; color: var(--ink); cursor: pointer; }
+.radio input {
+  -webkit-appearance: none; appearance: none;
+  flex: none; display: grid; place-content: center;
+  width: 22px; height: 22px; margin: 0;
+  background: var(--paper); border: 1.5px solid var(--field-border); border-radius: 50%;
   cursor: pointer;
 }
-.pick .icon { flex: none; width: 26px; height: 26px; color: var(--gold-ink); stroke-width: 1.5; }
-.pick:hover { border-color: var(--navy); background: var(--mist); }
-.pick-grid input:checked + .pick { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
-.pick-grid input:checked + .pick .icon { color: var(--gold-bright); }
-.pick-grid input:focus-visible + .pick { outline: 3px solid var(--navy); outline-offset: 2px; }
-
-/* Where: small chips */
-.choice-row { display: flex; flex-wrap: wrap; gap: .5rem; }
-.choice-row label {
-  display: inline-flex; align-items: center; min-height: 44px; padding: .5rem 1.1rem;
-  border: 1px solid var(--field-border); border-radius: 999px;
-  background: var(--paper); color: var(--navy); font-weight: 600; cursor: pointer;
-}
-.choice-row label:hover { border-color: var(--navy); background: var(--mist); }
-.choice-row input:checked + label { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
-.choice-row input:focus-visible + label { outline: 3px solid var(--navy); outline-offset: 2px; }
-
-/* Call / Text / Email: one joined switch */
-.segmented { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.segmented label {
-  display: flex; align-items: center; justify-content: center; gap: .45rem;
-  min-height: 48px; padding: .5rem .6rem; margin-left: -1px;
-  background: var(--paper); border: 1px solid var(--field-border);
-  color: var(--navy); font-weight: 600; cursor: pointer;
-}
-.segmented label:first-of-type { margin-left: 0; border-radius: var(--radius) 0 0 var(--radius); }
-.segmented label:last-of-type { border-radius: 0 var(--radius) var(--radius) 0; }
-.segmented .icon { color: var(--gold-ink); }
-.segmented label:hover { background: var(--mist); }
-.segmented input:checked + label { position: relative; background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
-.segmented input:checked + label .icon { color: var(--gold-bright); }
-.segmented input:focus-visible + label { position: relative; z-index: 1; outline: 3px solid var(--navy); outline-offset: 2px; }
+.radio input::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--navy); transform: scale(0); }
+.radio input:checked { border-color: var(--navy); }
+.radio input:checked::before { transform: scale(1); }
+.radio input:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
 
 .form-submit { display: flex; flex-direction: column; gap: .8rem; padding-top: .25rem; }
 .btn-send { min-height: 54px; font-size: 1.0625rem; }
@@ -731,6 +711,8 @@ html.menu-locked, html.menu-locked body { overflow: hidden; }
   .site-header[data-menu="open"] .nav-panel { animation: menu-in .22s ease-out; }
   .menu-scrim:not([hidden]) { animation: fade-in .2s ease-out; }
   .is-sending .btn-spinner { animation: spin .8s linear infinite; }
+  .field :is(input[type="text"], input[type="tel"], input[type="email"], select, textarea) { transition: background-color .15s, border-color .15s, box-shadow .15s; }
+  .radio input::before { transition: transform .15s ease; }
 }
 @keyframes menu-in { from { opacity: 0; transform: translateY(-6px) scale(.98); } to { opacity: 1; transform: none; } }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
