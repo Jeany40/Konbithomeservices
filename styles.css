@@ -662,6 +662,8 @@ ul, ol { margin: 0; padding: 0; }
 @media (min-width: 1100px) { .proj-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .proj-grid.proj-count-1 { grid-template-columns: minmax(0, 1fr); max-width: 44rem; }
 @media (min-width: 1100px) { .proj-grid.proj-count-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* four cards sit two by two instead of three plus one left alone on a second row */
+@media (min-width: 1100px) { .proj-grid.proj-count-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .proj-card { position: relative; display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
 .pc-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
 .pc-shot { position: relative; display: block; min-width: 0; overflow: hidden; background: var(--navy-2); }
