@@ -888,7 +888,6 @@ ul, ol { margin: 0; padding: 0; }
 }
 
 /* About: meet the family. Three equal portraits, same 4:5 crop, names large under a short champagne line */
-.family-body { display: flex; flex-direction: column; gap: 2rem; }
 .family-grid { list-style: none; display: grid; gap: 2.75rem; }
 .family-member figure { margin: 0; display: flex; flex-direction: column; gap: 1.1rem; }
 .fm-photo { overflow: hidden; background: var(--charcoal-2); }
@@ -898,7 +897,6 @@ ul, ol { margin: 0; padding: 0; }
   letter-spacing: -.01em; text-transform: uppercase; color: var(--fg);
 }
 .fm-name::before { content: ""; display: block; width: 2.25rem; height: 1px; margin-bottom: .9rem; background: var(--accent); }
-.family-note { font-size: .8125rem; color: var(--fg-muted); }
 @media (min-width: 640px) {
   .family-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 2rem); }
   .fm-name { font-size: clamp(1.1rem, .7rem + 1.5vw, 2.25rem); }
