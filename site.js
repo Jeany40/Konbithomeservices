@@ -115,6 +115,7 @@
       service: document.getElementById('est-service'),
       area: document.getElementById('est-area'),
       details: document.getElementById('est-details'),
+      timeline: document.getElementById('est-timeline'),
       name: document.getElementById('est-name'),
       phone: document.getElementById('est-phone'),
       email: document.getElementById('est-email')
@@ -169,6 +170,7 @@
       if (email) lines.push('Email: ' + email);
       lines.push('Project location: ' + f.area.value);
       lines.push('Type of work: ' + f.service.value);
+      if (f.timeline.value) lines.push('When I’d like to start: ' + f.timeline.value);
       var details = f.details.value.trim();
       if (details) lines.push('', 'Project details:', details);
       lines.push('', 'Best way to reach me: ' + contactMethod());
@@ -205,6 +207,7 @@
       }
       data['Project location'] = f.area.value;
       data['Type of work'] = f.service.value;
+      if (f.timeline.value) data['Timeline'] = f.timeline.value;
       if (details) data['Project details'] = details;
       data['Best way to reach them'] = contactMethod();
       return data;
@@ -303,11 +306,21 @@
       return shots.filter(function (s) { return s.getAttribute('data-gallery') === name; })
         .sort(function (a, b) { return Number(a.getAttribute('data-lightbox')) - Number(b.getAttribute('data-lightbox')); });
     };
+    // Show the large photo as WebP when this browser already chose WebP for the page's photos.
+    var webpOk = function () {
+      return Array.prototype.some.call(document.querySelectorAll('picture img'), function (img) {
+        return /\.webp(\?|$)/.test(img.currentSrc || '');
+      });
+    };
+    lbImg.addEventListener('error', function () {
+      if (/\.webp$/.test(lbImg.src)) lbImg.src = lbImg.src.replace(/\.webp$/, '.jpg');
+    });
     var showShot = function (i) {
       current = (i + group.length) % group.length;
       var s = group[current];
       var thumb = s.querySelector('img');
-      lbImg.src = s.getAttribute('data-full');
+      var full = s.getAttribute('data-full');
+      lbImg.src = webpOk() ? full.replace(/\.jpg$/, '.webp') : full;
       lbImg.alt = s.getAttribute('data-alt') || (thumb ? thumb.alt : '');
       lbCap.textContent = s.getAttribute('data-caption') || '';
       lbCount.textContent = (current + 1) + ' / ' + group.length;
@@ -335,5 +348,72 @@
   } else {
     shots.forEach(function (s) { s.style.cursor = 'default'; });
     Array.prototype.forEach.call(document.querySelectorAll('[data-open-gallery]'), function (b) { b.hidden = true; });
+  }
+
+  /* ---------- Phones: Call / Free Estimate bar ---------- */
+  var bar = document.getElementById('action-bar');
+  if (bar) {
+    var pageTop = document.querySelector('.hero, .page-hero');
+    if (pageTop && 'IntersectionObserver' in window) {
+      bar.classList.add('is-waiting');
+      new IntersectionObserver(function (entries) {
+        bar.classList.toggle('is-waiting', entries[0].isIntersecting);
+      }).observe(pageTop);
+    }
+    // Keep it out of the way of the on-screen keyboard while someone is typing.
+    document.addEventListener('focusin', function (e) {
+      if (e.target.matches && e.target.matches('input, select, textarea')) bar.classList.add('is-typing');
+    });
+    document.addEventListener('focusout', function () { bar.classList.remove('is-typing'); });
+  }
+
+  /* ---------- Our Work: filter by type of project ---------- */
+  var filterBar = document.querySelector('[data-filter-bar]');
+  if (filterBar) {
+    var filterBtns = Array.prototype.slice.call(filterBar.querySelectorAll('button[data-filter]'));
+    var projects = Array.prototype.slice.call(document.querySelectorAll('[data-cats]'));
+    var groups = Array.prototype.slice.call(document.querySelectorAll('[data-filter-group]'));
+    var filterStatus = document.getElementById('filter-status');
+    filterBar.hidden = false;
+    filterBar.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('button[data-filter]') : null;
+      if (!btn) return;
+      var want = btn.getAttribute('data-filter');
+      filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      var shown = 0;
+      projects.forEach(function (el) {
+        var on = want === 'all' || el.getAttribute('data-cats').split(' ').indexOf(want) !== -1;
+        el.hidden = !on;
+        if (on) shown += 1;
+      });
+      groups.forEach(function (g) { g.hidden = !g.querySelector('[data-cats]:not([hidden])'); });
+      if (filterStatus) filterStatus.textContent = 'Showing ' + shown + (shown === 1 ? ' project.' : ' projects.');
+    });
+  }
+
+  /* ---------- Gentle reveal of cards as they scroll into view ---------- */
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!calm && 'IntersectionObserver' in window) {
+    var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal, .why-item, .step, .mini-card'));
+    revealEls.forEach(function (el) {
+      el.classList.add('reveal');
+      var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+      el.style.setProperty('--reveal-delay', (Math.min(i, 3) * 0.08) + 's');
+    });
+    document.documentElement.classList.add('reveal-ready');
+    var revealer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        revealer.unobserve(el);
+        el.classList.add('is-in');
+        // Afterwards, hand the card back to its normal hover styles.
+        setTimeout(function () {
+          el.classList.remove('reveal', 'is-in');
+          el.style.removeProperty('--reveal-delay');
+        }, 1100);
+      });
+    }, { rootMargin: '0px 0px -6% 0px' });
+    revealEls.forEach(function (el) { revealer.observe(el); });
   }
 })();

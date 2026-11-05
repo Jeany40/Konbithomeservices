@@ -3,26 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Our Work | Konbit Home Services</title>
-<meta name="description" content="Before and after photos of recent bathrooms, floors, stairs, and a basement build-out by Konbit Home Services.">
+<title>Before &amp; After Renovation Projects | Konbit Home Services</title>
+<meta name="description" content="Real before and after photos of Konbit bathrooms, walk-in showers, floors, stairs, and a basement build-out on Long Island and in Queens and Brooklyn.">
 <link rel="canonical" href="https://konbithomeservices.com/our-work.html">
+<link rel="preload" href="fonts/figtree-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/libre-caslon-text-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <meta name="theme-color" content="#0B2545">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Konbit Home Services">
-<meta property="og:title" content="Our Work | Konbit Home Services">
-<meta property="og:description" content="Before and after photos of recent bathrooms, floors, stairs, and a basement build-out by Konbit Home Services.">
+<meta property="og:title" content="Our Work: Real Before &amp; After Projects | Konbit Home Services">
+<meta property="og:description" content="Real before and after photos of Konbit bathrooms, walk-in showers, floors, stairs, and a basement build-out on Long Island and in Queens and Brooklyn.">
 <meta property="og:url" content="https://konbithomeservices.com/our-work.html">
 <meta property="og:image" content="https://konbithomeservices.com/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="The Konbit Home Services logo">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -82,21 +81,21 @@
               Services <svg class="icon icon-sm" aria-hidden="true"><use href="#i-chevron"></use></svg>
             </button>
             <ul class="dropdown-panel" id="services-menu" hidden>
-              <li><a href="services.html#svc-bathroom">Bathroom Renovations</a></li>
-              <li><a href="services.html#svc-tile">Tile Installation</a></li>
-              <li><a href="services.html#svc-flooring">Flooring Installation</a></li>
-              <li><a href="services.html#svc-kitchen">Kitchen Improvements</a></li>
-              <li><a href="services.html#svc-carpentry">Carpentry</a></li>
-              <li><a href="services.html#svc-framing">Framing &amp; Drywall</a></li>
-              <li><a href="services.html#svc-painting">Painting</a></li>
-              <li><a href="services.html#svc-repairs">General Repairs &amp; Maintenance</a></li>
+              <li><a href="bathroom-renovations.html">Bathroom Renovations</a></li>
+              <li><a href="tile-installation.html">Tile Installation</a></li>
+              <li><a href="flooring-installation.html">Flooring Installation</a></li>
+              <li><a href="kitchen-improvements.html">Kitchen Improvements</a></li>
+              <li><a href="carpentry.html">Carpentry</a></li>
+              <li><a href="framing-drywall.html">Framing &amp; Drywall</a></li>
+              <li><a href="painting.html">Painting</a></li>
+              <li><a href="home-repairs.html">General Repairs &amp; Maintenance</a></li>
               <li class="dropdown-all"><a href="services.html">See all services</a></li>
             </ul>
           </li>
           <li><a class="nav-link is-current" href="our-work.html" aria-current="page">Our Work</a></li>
           <li><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
-        <a class="btn btn-gold nav-cta" href="contact.html">Get a Free Estimate</a>
+        <a class="btn btn-gold nav-cta" href="contact.html">Request a Free Estimate</a>
         <a class="btn btn-outline nav-call" href="tel:+17186967379"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"></use></svg> Call (718) 696-7379</a>
       </nav>
     </div>
@@ -113,22 +112,34 @@
     <div class="wrap page-hero-inner">
       <p class="eyebrow">Our work</p>
       <h1 id="page-title">Real Projects. Real Transformations.</h1>
-      <p class="page-hero-lede">Recent jobs from our crew, shown step by step. Tap any photo to see it larger.</p>
+      <p class="page-hero-lede">Konbit jobs shown before, during, and after: bathrooms and walk-in showers, floors, stairs, and a basement build-out. Tap any photo to see it larger.</p>
     </div>
   </section>
 
   <section class="section" aria-label="Projects">
     <div class="wrap">
-      <article class="project" id="bath1" aria-labelledby="project-bath-title">
+      <div class="filter-bar" data-filter-bar hidden>
+        <p class="filter-label" id="filter-label">Show</p>
+        <div class="filter-buttons" role="group" aria-labelledby="filter-label">
+          <button type="button" data-filter="all" aria-pressed="true">All projects</button>
+          <button type="button" data-filter="bathroom" aria-pressed="false">Bathrooms</button>
+          <button type="button" data-filter="floors" aria-pressed="false">Floors &amp; stairs</button>
+          <button type="button" data-filter="basement" aria-pressed="false">Basements</button>
+        </div>
+        <p class="sr-only" id="filter-status" aria-live="polite"></p>
+      </div>
+
+      <article class="project" id="bath1" data-cats="bathroom" aria-labelledby="project-bath-title">
         <div class="project-head">
           <p class="eyebrow">Renovation</p>
           <h2 class="project-title" id="project-bath-title">Tub-to-Shower Bathroom Renovation</h2>
           <p class="project-summary">We replaced a dated tub with a walk-in shower, finished with large marble-look wall tile, a hexagon mosaic floor, black rain and handheld shower fixtures, a built-in niche, and a sliding glass door.</p>
+          <p class="project-links"><a href="bathroom-renovations.html">Bathroom renovations</a><a href="contact.html?service=Bathroom%20Renovations">Request a similar project</a></p>
         </div>
         <div class="ba-pair">
           <figure class="shot shot-before">
             <button class="shot-open" type="button" data-gallery="bath1" data-lightbox="0" data-full="img/bath-before-1600.jpg" data-caption="Before: a dated tub with frosted sliding doors and worn tile.">
-              <img src="img/bath-before-960.jpg" srcset="img/bath-before-960.jpg 960w, img/bath-before-1600.jpg 1600w" sizes="(min-width: 760px) 60vw, 100vw" width="1600" height="1200" loading="lazy" alt="Before: an old bathtub with frosted sliding doors, worn wall tile, and an over-the-toilet cabinet">
+              <picture><source type="image/webp" srcset="img/bath-before-960.webp 960w, img/bath-before-1600.webp 1600w" sizes="(min-width: 760px) 60vw, 100vw"><img src="img/bath-before-960.jpg" srcset="img/bath-before-960.jpg 960w, img/bath-before-1600.jpg 1600w" sizes="(min-width: 760px) 60vw, 100vw" width="1600" height="1200" loading="lazy" alt="Before: an old bathtub with frosted sliding doors, worn wall tile, and an over-the-toilet cabinet"></picture>
               <span class="shot-tag">Before</span>
               <span class="shot-zoom" aria-hidden="true"><svg class="icon icon-sm"><use href="#i-expand"></use></svg></span>
               <span class="sr-only">View larger</span>
@@ -137,7 +148,7 @@
           </figure>
           <figure class="shot shot-after">
             <button class="shot-open" type="button" data-gallery="bath1" data-lightbox="4" data-full="img/bath-after-1200.jpg" data-caption="After: a walk-in shower with a hexagon mosaic floor, black rain and handheld shower, a built-in niche, and a new vanity.">
-              <img src="img/bath-after-600.jpg" srcset="img/bath-after-600.jpg 600w, img/bath-after-1200.jpg 1200w" sizes="(min-width: 760px) 34vw, 100vw" width="1200" height="1600" loading="lazy" alt="After: a walk-in shower with large gray marble-look tile, a hexagon mosaic floor, black rain and handheld shower fixtures, a tiled niche, a sliding glass door, and a new white vanity">
+              <picture><source type="image/webp" srcset="img/bath-after-600.webp 600w, img/bath-after-1200.webp 1200w" sizes="(min-width: 760px) 34vw, 100vw"><img src="img/bath-after-600.jpg" srcset="img/bath-after-600.jpg 600w, img/bath-after-1200.jpg 1200w" sizes="(min-width: 760px) 34vw, 100vw" width="1200" height="1600" loading="lazy" alt="After: a walk-in shower with large gray marble-look tile, a hexagon mosaic floor, black rain and handheld shower fixtures, a tiled niche, a sliding glass door, and a new white vanity"></picture>
               <span class="shot-tag">After</span>
               <span class="shot-zoom" aria-hidden="true"><svg class="icon icon-sm"><use href="#i-expand"></use></svg></span>
               <span class="sr-only">View larger</span>
@@ -150,7 +161,7 @@
           <ol class="build-steps">
             <li class="build-step">
               <button class="shot-open" type="button" data-gallery="bath1" data-lightbox="1" data-full="img/bath-demo-1200.jpg" data-caption="Step 1, down to the studs: the old tub, tile, and walls removed to the framing.">
-                <img src="img/bath-demo-600.jpg" srcset="img/bath-demo-600.jpg 600w, img/bath-demo-1200.jpg 1200w" sizes="(min-width: 640px) 30vw, 112px" width="1200" height="1600" loading="lazy" alt="Demolition: the bathroom stripped to the wall framing and subfloor, with the old tub removed">
+                <picture><source type="image/webp" srcset="img/bath-demo-600.webp 600w, img/bath-demo-1200.webp 1200w" sizes="(min-width: 640px) 30vw, 112px"><img src="img/bath-demo-600.jpg" srcset="img/bath-demo-600.jpg 600w, img/bath-demo-1200.jpg 1200w" sizes="(min-width: 640px) 30vw, 112px" width="1200" height="1600" loading="lazy" alt="Demolition: the bathroom stripped to the wall framing and subfloor, with the old tub removed"></picture>
                 <span class="sr-only">View larger</span>
               </button>
               <div class="build-text">
@@ -161,7 +172,7 @@
             </li>
             <li class="build-step">
               <button class="shot-open" type="button" data-gallery="bath1" data-lightbox="2" data-full="img/bath-backer-1200.jpg" data-caption="Step 2, a waterproof base: new backer board on the walls and a sealed shower base and curb around the new drain.">
-                <img src="img/bath-backer-600.jpg" srcset="img/bath-backer-600.jpg 600w, img/bath-backer-1200.jpg 1200w" sizes="(min-width: 640px) 30vw, 112px" width="1200" height="1600" loading="lazy" alt="New waterproof backer board on the shower walls, with a sealed shower base, curb, and drain">
+                <picture><source type="image/webp" srcset="img/bath-backer-600.webp 600w, img/bath-backer-1200.webp 1200w" sizes="(min-width: 640px) 30vw, 112px"><img src="img/bath-backer-600.jpg" srcset="img/bath-backer-600.jpg 600w, img/bath-backer-1200.jpg 1200w" sizes="(min-width: 640px) 30vw, 112px" width="1200" height="1600" loading="lazy" alt="New waterproof backer board on the shower walls, with a sealed shower base, curb, and drain"></picture>
                 <span class="sr-only">View larger</span>
               </button>
               <div class="build-text">
@@ -172,7 +183,7 @@
             </li>
             <li class="build-step">
               <button class="shot-open" type="button" data-gallery="bath1" data-lightbox="3" data-full="img/bath-tile-1200.jpg" data-caption="Step 3, tile set level: large-format wall tile installed with a leveling system, with a recessed niche framed in.">
-                <img src="img/bath-tile-600.jpg" srcset="img/bath-tile-600.jpg 600w, img/bath-tile-1200.jpg 1200w" sizes="(min-width: 640px) 30vw, 112px" width="1200" height="1600" loading="lazy" alt="Large gray marble-look tiles going up on the shower walls with leveling clips, and a niche framed in">
+                <picture><source type="image/webp" srcset="img/bath-tile-600.webp 600w, img/bath-tile-1200.webp 1200w" sizes="(min-width: 640px) 30vw, 112px"><img src="img/bath-tile-600.jpg" srcset="img/bath-tile-600.jpg 600w, img/bath-tile-1200.jpg 1200w" sizes="(min-width: 640px) 30vw, 112px" width="1200" height="1600" loading="lazy" alt="Large gray marble-look tiles going up on the shower walls with leveling clips, and a niche framed in"></picture>
                 <span class="sr-only">View larger</span>
               </button>
               <div class="build-text">
@@ -185,16 +196,17 @@
         </div>
       </article>
 
-      <article class="project" id="bath2" aria-labelledby="project-bath2-title">
+      <article class="project" id="bath2" data-cats="bathroom" aria-labelledby="project-bath2-title">
         <div class="project-head">
           <p class="eyebrow">Built from scratch</p>
           <h2 class="project-title" id="project-bath2-title">New Bathroom, Framing to Finish</h2>
           <p class="project-summary">We built this bathroom from the framing up, with a tiled walk-in shower, a hexagon mosaic shower floor, a built-in niche, large marble-look floor tile, a gray shaker vanity, and a backlit mirror.</p>
+          <p class="project-links"><a href="framing-drywall.html">Framing &amp; drywall</a><a href="tile-installation.html">Tile installation</a><a href="contact.html?service=Bathroom%20Renovations">Request a similar project</a></p>
         </div>
         <div class="ba-pair">
           <figure class="shot shot-before">
             <button class="shot-open" type="button" data-gallery="bath2" data-lightbox="0" data-full="img/bath2-framing-1600.jpg" data-caption="Framing: new wood framing goes up, with foam board insulation on the walls behind it.">
-              <img src="img/bath2-framing-960.jpg" srcset="img/bath2-framing-960.jpg 960w, img/bath2-framing-1600.jpg 1600w" sizes="(min-width: 760px) 60vw, 100vw" width="1600" height="1200" loading="lazy" alt="Framing stage: new wood stud walls in front of foil-faced foam board insulation, with pipes and wiring roughed in">
+              <picture><source type="image/webp" srcset="img/bath2-framing-960.webp 960w, img/bath2-framing-1600.webp 1600w" sizes="(min-width: 760px) 60vw, 100vw"><img src="img/bath2-framing-960.jpg" srcset="img/bath2-framing-960.jpg 960w, img/bath2-framing-1600.jpg 1600w" sizes="(min-width: 760px) 60vw, 100vw" width="1600" height="1200" loading="lazy" alt="Framing stage: new wood stud walls in front of foil-faced foam board insulation, with pipes and wiring roughed in"></picture>
               <span class="shot-tag">Framing</span>
               <span class="shot-zoom" aria-hidden="true"><svg class="icon icon-sm"><use href="#i-expand"></use></svg></span>
               <span class="sr-only">View larger</span>
@@ -203,7 +215,7 @@
           </figure>
           <figure class="shot shot-after">
             <button class="shot-open" type="button" data-gallery="bath2" data-lightbox="4" data-full="img/bath2-finished-1200.jpg" data-caption="Finished: a walk-in shower with a sliding glass door, black rain and handheld shower, a gray shaker vanity, and a backlit mirror.">
-              <img src="img/bath2-finished-600.jpg" srcset="img/bath2-finished-600.jpg 600w, img/bath2-finished-1200.jpg 1200w" sizes="(min-width: 760px) 34vw, 100vw" width="1200" height="1600" loading="lazy" alt="Finished bathroom: a walk-in shower with white marble-look tile, a hexagon mosaic floor, a tiled niche, black fixtures, and a black-framed sliding glass door, next to a gray vanity with a black faucet and a backlit mirror">
+              <picture><source type="image/webp" srcset="img/bath2-finished-600.webp 600w, img/bath2-finished-1200.webp 1200w" sizes="(min-width: 760px) 34vw, 100vw"><img src="img/bath2-finished-600.jpg" srcset="img/bath2-finished-600.jpg 600w, img/bath2-finished-1200.jpg 1200w" sizes="(min-width: 760px) 34vw, 100vw" width="1200" height="1600" loading="lazy" alt="Finished bathroom: a walk-in shower with white marble-look tile, a hexagon mosaic floor, a tiled niche, black fixtures, and a black-framed sliding glass door, next to a gray vanity with a black faucet and a backlit mirror"></picture>
               <span class="shot-tag">Finished</span>
               <span class="shot-zoom" aria-hidden="true"><svg class="icon icon-sm"><use href="#i-expand"></use></svg></span>
               <span class="sr-only">View larger</span>
@@ -216,7 +228,7 @@
           <ol class="build-steps is-landscape">
             <li class="build-step">
               <button class="shot-open" type="button" data-gallery="bath2" data-lightbox="1" data-full="img/bath2-backer-1600.jpg" data-caption="Step 1, walls and a waterproof base: waterproof backer board in the shower, mold-resistant drywall on the other walls, and a sealed shower base and curb.">
-                <img src="img/bath2-backer-960.jpg" srcset="img/bath2-backer-960.jpg 960w, img/bath2-backer-1600.jpg 1600w" sizes="(min-width: 640px) 30vw, 140px" width="1600" height="1200" loading="lazy" alt="Waterproof backer board on the shower walls, a sealed shower base and curb around the drain, and green mold-resistant drywall on the rest of the room">
+                <picture><source type="image/webp" srcset="img/bath2-backer-960.webp 960w, img/bath2-backer-1600.webp 1600w" sizes="(min-width: 640px) 30vw, 140px"><img src="img/bath2-backer-960.jpg" srcset="img/bath2-backer-960.jpg 960w, img/bath2-backer-1600.jpg 1600w" sizes="(min-width: 640px) 30vw, 140px" width="1600" height="1200" loading="lazy" alt="Waterproof backer board on the shower walls, a sealed shower base and curb around the drain, and green mold-resistant drywall on the rest of the room"></picture>
                 <span class="sr-only">View larger</span>
               </button>
               <div class="build-text">
@@ -227,7 +239,7 @@
             </li>
             <li class="build-step">
               <button class="shot-open" type="button" data-gallery="bath2" data-lightbox="2" data-full="img/bath2-shower-1600.jpg" data-caption="Step 2, shower tile: large marble-look wall tile, a hexagon mosaic floor, and a niche with a hexagon tile back.">
-                <img src="img/bath2-shower-960.jpg" srcset="img/bath2-shower-960.jpg 960w, img/bath2-shower-1600.jpg 1600w" sizes="(min-width: 640px) 30vw, 140px" width="1600" height="1200" loading="lazy" alt="The shower tiled in large white marble-look tile with gray veins, a hexagon mosaic floor, and a recessed niche">
+                <picture><source type="image/webp" srcset="img/bath2-shower-960.webp 960w, img/bath2-shower-1600.webp 1600w" sizes="(min-width: 640px) 30vw, 140px"><img src="img/bath2-shower-960.jpg" srcset="img/bath2-shower-960.jpg 960w, img/bath2-shower-1600.jpg 1600w" sizes="(min-width: 640px) 30vw, 140px" width="1600" height="1200" loading="lazy" alt="The shower tiled in large white marble-look tile with gray veins, a hexagon mosaic floor, and a recessed niche"></picture>
                 <span class="sr-only">View larger</span>
               </button>
               <div class="build-text">
@@ -238,7 +250,7 @@
             </li>
             <li class="build-step">
               <button class="shot-open" type="button" data-gallery="bath2" data-lightbox="3" data-full="img/bath2-floor-1600.jpg" data-caption="Step 3, floor tile: large marble-look floor tile, set flat with a leveling system.">
-                <img src="img/bath2-floor-960.jpg" srcset="img/bath2-floor-960.jpg 960w, img/bath2-floor-1600.jpg 1600w" sizes="(min-width: 640px) 30vw, 140px" width="1600" height="1200" loading="lazy" alt="Large marble-look floor tiles being set with yellow leveling clips, next to the tiled shower curb">
+                <picture><source type="image/webp" srcset="img/bath2-floor-960.webp 960w, img/bath2-floor-1600.webp 1600w" sizes="(min-width: 640px) 30vw, 140px"><img src="img/bath2-floor-960.jpg" srcset="img/bath2-floor-960.jpg 960w, img/bath2-floor-1600.jpg 1600w" sizes="(min-width: 640px) 30vw, 140px" width="1600" height="1200" loading="lazy" alt="Large marble-look floor tiles being set with yellow leveling clips, next to the tiled shower curb"></picture>
                 <span class="sr-only">View larger</span>
               </button>
               <div class="build-text">
@@ -251,22 +263,22 @@
         </div>
       </article>
 
-      <section class="project" id="more" aria-labelledby="project-more-title">
+      <section class="project" id="more" data-filter-group aria-labelledby="project-more-title">
         <div class="project-head">
           <p class="eyebrow">More projects</p>
           <h2 class="project-title" id="project-more-title">Floors, Stairs, and Basement Work</h2>
           <p class="project-summary">A kitchen floor repaired from the subfloor up, a bedroom and a staircase redone in vinyl plank, and a basement build-out we’re working on now.</p>
         </div>
         <ul class="mini-grid">
-          <li class="mini-card">
+          <li class="mini-card" id="kitchen-floor" data-cats="floors">
             <div class="mini-pair">
               <button class="shot-open" type="button" data-gallery="kitchen" data-lightbox="0" data-full="img/kitchen-hole-1600.jpg" data-caption="Before: a hole through the kitchen subfloor, with damaged wood around it.">
-                <img src="img/kitchen-hole-480.jpg" srcset="img/kitchen-hole-480.jpg 480w, img/kitchen-hole-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1201" loading="lazy" alt="Before: a hole broken through an old kitchen subfloor, with splintered, damaged wood and debris around it">
+                <picture><source type="image/webp" srcset="img/kitchen-hole-480.webp 480w, img/kitchen-hole-960.webp 960w" sizes="(min-width: 900px) 22vw, 45vw"><img src="img/kitchen-hole-480.jpg" srcset="img/kitchen-hole-480.jpg 480w, img/kitchen-hole-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1201" loading="lazy" alt="Before: a hole broken through an old kitchen subfloor, with splintered, damaged wood and debris around it"></picture>
                 <span class="shot-tag">Before</span>
                 <span class="sr-only">View larger</span>
               </button>
               <button class="shot-open shot-after" type="button" data-gallery="kitchen" data-lightbox="2" data-full="img/kitchen-after-1600.jpg" data-caption="After: new vinyl plank flooring across the kitchen.">
-                <img src="img/kitchen-after-480.jpg" srcset="img/kitchen-after-480.jpg 480w, img/kitchen-after-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="After: new gray-brown vinyl plank flooring in a kitchen with wood cabinets, a dishwasher, and a stainless refrigerator">
+                <picture><source type="image/webp" srcset="img/kitchen-after-480.webp 480w, img/kitchen-after-960.webp 960w" sizes="(min-width: 900px) 22vw, 45vw"><img src="img/kitchen-after-480.jpg" srcset="img/kitchen-after-480.jpg 480w, img/kitchen-after-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="After: new gray-brown vinyl plank flooring in a kitchen with wood cabinets, a dishwasher, and a stainless refrigerator"></picture>
                 <span class="shot-tag">After</span>
                 <span class="sr-only">View larger</span>
               </button>
@@ -280,17 +292,18 @@
                 <svg class="icon icon-sm" aria-hidden="true"><use href="#i-expand"></use></svg>
                 See all 4 photos<span class="sr-only"> of the kitchen floor</span>
               </button>
+              <p class="mini-links"><a href="flooring-installation.html">Flooring installation</a><a href="contact.html?service=Flooring%20Installation">Request a similar project</a></p>
             </div>
           </li>
-          <li class="mini-card">
+          <li class="mini-card" id="bedroom" data-cats="floors">
             <div class="mini-pair">
               <button class="shot-open" type="button" data-gallery="bedroom" data-lightbox="0" data-full="img/bedroom-before-1600.jpg" data-caption="Before: stained carpet and worn yellow walls.">
-                <img src="img/bedroom-before-480.jpg" srcset="img/bedroom-before-480.jpg 480w, img/bedroom-before-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="Before: a bedroom with stained beige carpet, cream walls, and two closets">
+                <picture><source type="image/webp" srcset="img/bedroom-before-480.webp 480w, img/bedroom-before-960.webp 960w" sizes="(min-width: 900px) 22vw, 45vw"><img src="img/bedroom-before-480.jpg" srcset="img/bedroom-before-480.jpg 480w, img/bedroom-before-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="Before: a bedroom with stained beige carpet, cream walls, and two closets"></picture>
                 <span class="shot-tag">Before</span>
                 <span class="sr-only">View larger</span>
               </button>
               <button class="shot-open shot-after" type="button" data-gallery="bedroom" data-lightbox="2" data-full="img/bedroom-after-1600.jpg" data-caption="After: vinyl plank flooring, fresh paint, and new baseboard.">
-                <img src="img/bedroom-after-480.jpg" srcset="img/bedroom-after-480.jpg 480w, img/bedroom-after-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="After: the same bedroom with dark vinyl plank flooring, light gray walls, white baseboard, and two closets with white sliding doors">
+                <picture><source type="image/webp" srcset="img/bedroom-after-480.webp 480w, img/bedroom-after-960.webp 960w" sizes="(min-width: 900px) 22vw, 45vw"><img src="img/bedroom-after-480.jpg" srcset="img/bedroom-after-480.jpg 480w, img/bedroom-after-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="After: the same bedroom with dark vinyl plank flooring, light gray walls, white baseboard, and two closets with white sliding doors"></picture>
                 <span class="shot-tag">After</span>
                 <span class="sr-only">View larger</span>
               </button>
@@ -304,17 +317,18 @@
                 <svg class="icon icon-sm" aria-hidden="true"><use href="#i-expand"></use></svg>
                 See all 4 photos<span class="sr-only"> of the bedroom</span>
               </button>
+              <p class="mini-links"><a href="flooring-installation.html">Flooring installation</a><a href="contact.html?service=Flooring%20Installation">Request a similar project</a></p>
             </div>
           </li>
-          <li class="mini-card">
+          <li class="mini-card" id="stairs" data-cats="floors">
             <div class="mini-pair">
               <button class="shot-open" type="button" data-gallery="stairs" data-lightbox="0" data-full="img/stairs-before-1200.jpg" data-caption="Before: worn carpet on every step.">
-                <img src="img/stairs-before-thumb-480.jpg" srcset="img/stairs-before-thumb-480.jpg 480w, img/stairs-before-thumb-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="960" height="720" loading="lazy" alt="Before: a long, narrow staircase covered in worn beige carpet, with tools resting on the steps">
+                <picture><source type="image/webp" srcset="img/stairs-before-thumb-480.webp 480w, img/stairs-before-thumb-960.webp 960w" sizes="(min-width: 900px) 22vw, 45vw"><img src="img/stairs-before-thumb-480.jpg" srcset="img/stairs-before-thumb-480.jpg 480w, img/stairs-before-thumb-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="960" height="720" loading="lazy" alt="Before: a long, narrow staircase covered in worn beige carpet, with tools resting on the steps"></picture>
                 <span class="shot-tag">Before</span>
                 <span class="sr-only">View larger</span>
               </button>
               <button class="shot-open shot-after" type="button" data-gallery="stairs" data-lightbox="1" data-full="img/stairs-after-1200.jpg" data-caption="After: dark vinyl plank treads with white risers.">
-                <img src="img/stairs-after-thumb-480.jpg" srcset="img/stairs-after-thumb-480.jpg 480w, img/stairs-after-thumb-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="960" height="720" loading="lazy" alt="After: the same staircase with dark brown vinyl plank treads and white risers">
+                <picture><source type="image/webp" srcset="img/stairs-after-thumb-480.webp 480w, img/stairs-after-thumb-960.webp 960w" sizes="(min-width: 900px) 22vw, 45vw"><img src="img/stairs-after-thumb-480.jpg" srcset="img/stairs-after-thumb-480.jpg 480w, img/stairs-after-thumb-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="960" height="720" loading="lazy" alt="After: the same staircase with dark brown vinyl plank treads and white risers"></picture>
                 <span class="shot-tag">After</span>
                 <span class="sr-only">View larger</span>
               </button>
@@ -326,17 +340,18 @@
                 <svg class="icon icon-sm" aria-hidden="true"><use href="#i-expand"></use></svg>
                 See both photos<span class="sr-only"> of the stairs</span>
               </button>
+              <p class="mini-links"><a href="carpentry.html">Stair carpentry</a><a href="contact.html?service=Flooring%20Installation">Request a similar project</a></p>
             </div>
           </li>
-          <li class="mini-card">
+          <li class="mini-card" id="basement" data-cats="basement">
             <div class="mini-pair">
               <button class="shot-open" type="button" data-gallery="basement" data-lightbox="0" data-full="img/basement-before-1600.jpg" data-caption="Before: the old foundation wall was crumbling, with loose patches and peeling paint.">
-                <img src="img/basement-before-480.jpg" srcset="img/basement-before-480.jpg 480w, img/basement-before-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="Before: a crumbling old basement foundation wall with peeling paint, a small window, exposed wiring, and drain pipes">
+                <picture><source type="image/webp" srcset="img/basement-before-480.webp 480w, img/basement-before-960.webp 960w" sizes="(min-width: 900px) 22vw, 45vw"><img src="img/basement-before-480.jpg" srcset="img/basement-before-480.jpg 480w, img/basement-before-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="Before: a crumbling old basement foundation wall with peeling paint, a small window, exposed wiring, and drain pipes"></picture>
                 <span class="shot-tag">Before</span>
                 <span class="sr-only">View larger</span>
               </button>
               <button class="shot-open shot-progress" type="button" data-gallery="basement" data-lightbox="4" data-full="img/basement-progress-1600.jpg" data-caption="In progress: new walls, a new ceiling, and three new doors.">
-                <img src="img/basement-progress-480.jpg" srcset="img/basement-progress-480.jpg 480w, img/basement-progress-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="In progress: the basement with new gray drywall walls, a new ceiling, and three new white six-panel doors">
+                <picture><source type="image/webp" srcset="img/basement-progress-480.webp 480w, img/basement-progress-960.webp 960w" sizes="(min-width: 900px) 22vw, 45vw"><img src="img/basement-progress-480.jpg" srcset="img/basement-progress-480.jpg 480w, img/basement-progress-960.jpg 960w" sizes="(min-width: 900px) 22vw, 45vw" width="1600" height="1200" loading="lazy" alt="In progress: the basement with new gray drywall walls, a new ceiling, and three new white six-panel doors"></picture>
                 <span class="shot-tag">In progress</span>
                 <span class="sr-only">View larger</span>
               </button>
@@ -351,6 +366,7 @@
                 <svg class="icon icon-sm" aria-hidden="true"><use href="#i-expand"></use></svg>
                 See all 5 photos<span class="sr-only"> of the basement</span>
               </button>
+              <p class="mini-links"><a href="framing-drywall.html">Framing &amp; drywall</a><a href="contact.html?service=Framing%20%26%20Drywall">Request a similar project</a></p>
             </div>
           </li>
         </ul>
@@ -363,23 +379,23 @@
     </div>
   </section>
 
-  <section class="area-band" aria-label="Service area">
-    <div class="wrap area-inner">
-      <p class="area-text">
-        <svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>
-        <span>Proudly serving Long Island, Queens, Brooklyn, and surrounding communities.</span>
-      </p>
-      <p class="area-phone">
-        <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
-        <a href="tel:+17186967379">(718) 696-7379</a>
-      </p>
-      <a class="btn btn-gold" href="contact.html">Get a Free Estimate <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="wrap cta-inner">
+      <div class="cta-copy">
+        <h2 id="cta-title">Ready to Start Your Project?</h2>
+        <p>Tell us what you need. The estimate is free, and we work in Brooklyn, Queens, Nassau County, Suffolk County, and nearby communities.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="contact.html">Request a Free Estimate</a>
+        <a class="btn btn-ghost" href="tel:+17186967379"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"></use></svg> Call (718) 696-7379</a>
+        <p class="cta-text">Or <a href="sms:+17186967379">send us a text</a> at the same number.</p>
+      </div>
     </div>
   </section>
 </main>
 <dialog class="lightbox" id="lightbox" aria-label="Project photos">
   <div class="lightbox-inner">
-    <img class="lightbox-img" id="lightbox-img" src="img/bath-after-600.jpg" loading="lazy" alt="">
+    <picture><source type="image/webp" srcset="img/bath-after-600.webp"><img class="lightbox-img" id="lightbox-img" src="img/bath-after-600.jpg" loading="lazy" alt=""></picture>
     <div class="lightbox-bar">
       <p class="lightbox-caption" id="lightbox-caption"></p>
       <div class="lightbox-controls">
@@ -398,33 +414,56 @@
       <p class="footer-sub">Home Services</p>
       <p class="footer-motto" lang="ht">Men anpil, chay pa lou</p>
       <p class="footer-motto-en">Many hands, light work.</p>
+      <p class="footer-about">Family-owned and operated by Jean, Mackenson, and Stevenson.</p>
     </div>
+    <nav class="footer-links" aria-labelledby="footer-services">
+      <h2 class="footer-heading" id="footer-services">Services</h2>
+      <ul>
+        <li><a href="bathroom-renovations.html">Bathroom Renovations</a></li>
+        <li><a href="tile-installation.html">Tile Installation</a></li>
+        <li><a href="flooring-installation.html">Flooring Installation</a></li>
+        <li><a href="kitchen-improvements.html">Kitchen Improvements</a></li>
+        <li><a href="carpentry.html">Carpentry</a></li>
+        <li><a href="framing-drywall.html">Framing &amp; Drywall</a></li>
+        <li><a href="painting.html">Painting</a></li>
+        <li><a href="home-repairs.html">General Repairs &amp; Maintenance</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-links" aria-labelledby="footer-company">
+      <h2 class="footer-heading" id="footer-company">Company</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">All Services</a></li>
+        <li><a href="our-work.html">Our Work</a></li>
+        <li><a href="contact.html">Free Estimate</a></li>
+      </ul>
+    </nav>
     <div class="footer-contact">
       <h2 class="footer-heading">Contact</h2>
       <p class="footer-line footer-phone">
         <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
         <a href="tel:+17186967379">(718) 696-7379</a>
       </p>
+      <p class="footer-line">
+        <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
+        <a href="sms:+17186967379">Text us</a>
+      </p>
       <p class="footer-line footer-area">
         <svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>
-        <span><strong>Service area</strong>Long Island, Queens, Brooklyn, and surrounding communities.</span>
+        <span><strong>Service area</strong>Brooklyn, Queens, Nassau County, Suffolk County, and nearby communities.</span>
       </p>
+      <a class="btn btn-gold footer-cta" href="contact.html">Request a Free Estimate</a>
     </div>
-    <nav class="footer-links" aria-label="Footer">
-      <h2 class="footer-heading">Pages</h2>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="our-work.html">Our Work</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
   </div>
   <div class="wrap">
-    <p class="footer-bottom">© <span id="year">2026</span> Konbit Home Services. All rights reserved.</p>
+    <p class="footer-bottom">© <span id="year">2026</span> Konbit Home Services. Family-owned and operated.</p>
   </div>
 </footer>
+<div class="action-bar" id="action-bar">
+  <a class="btn btn-outline" href="tel:+17186967379"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"></use></svg> Call</a>
+  <a class="btn btn-gold" href="contact.html">Free Estimate</a>
+</div>
 
 <script src="site.js"></script>
 </body>
