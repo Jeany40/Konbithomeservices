@@ -51,6 +51,7 @@
     <symbol id="i-chev-left" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
     <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
     <symbol id="i-expand" viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-6.5 6.5M4 20l6.5-6.5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
   </defs>
 </svg>
 
@@ -133,7 +134,11 @@
       </div>
 
       <div class="estimate-panel" id="estimate-panel">
-        <form class="form" id="estimate-form" novalidate aria-labelledby="form-title">
+        <form class="form" id="estimate-form" action="https://api.web3forms.com/submit" method="POST" aria-labelledby="form-title">
+          <input type="hidden" name="access_key" value="c00292ad-7f0f-4dfc-91b5-5df5871703ab">
+          <input type="hidden" name="subject" value="New estimate request from konbithomeservices.com">
+          <input type="hidden" name="from_name" value="Konbit Home Services website">
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
           <h2 class="form-title" id="form-title">Tell us about your project</h2>
           <p class="form-note">Fields marked <span class="req" aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
           <div class="field-row">
@@ -198,13 +203,25 @@
               <label for="contact-email">Email</label>
             </div>
           </fieldset>
-          <button class="btn btn-gold btn-block" type="submit">Review my request</button>
-          <p class="form-fine">Next, you’ll send your request to us by text message.</p>
+          <button class="btn btn-gold btn-block" id="estimate-send" type="submit">
+            <span class="btn-spinner" aria-hidden="true"></span>
+            <span class="btn-label">Send my request</span>
+          </button>
+          <p class="form-fine">Your request comes straight to our team. We only use your details to get back to you about your project.</p>
+          <p class="sr-only" id="form-live" aria-live="polite"></p>
         </form>
 
+        <div class="result" id="estimate-sent" hidden>
+          <span class="sent-mark" aria-hidden="true"><svg class="icon"><use href="#i-check"></use></svg></span>
+          <h2 class="form-title" id="sent-title" tabindex="-1">Thank you. We got your request.</h2>
+          <p class="result-help" id="sent-help">We’ll be in touch soon to talk it through and set up your free estimate.</p>
+          <p class="result-call">Need us sooner? Call or text <a href="tel:+17186967379">(718) 696-7379</a></p>
+          <button class="link-btn" id="sent-again" type="button">Send another request</button>
+        </div>
+
         <div class="result" id="estimate-result" hidden>
-          <h2 class="form-title" id="result-title" tabindex="-1">Your request is ready to send</h2>
-          <p class="result-help">Tap <strong>Send by text</strong> to open your messages app with everything filled in, then press send. If it doesn’t open, copy your request and text it to (718) 696-7379.</p>
+          <h2 class="form-title" id="result-title" tabindex="-1">Let’s send it by text instead</h2>
+          <p class="result-help">We couldn’t send your request online just now, but nothing is lost. Tap <strong>Send by text</strong> to open your messages app with everything filled in, then press send. If it doesn’t open, copy your request and text it to (718)&nbsp;696-7379.</p>
           <pre class="result-preview" id="result-preview"></pre>
           <div class="result-actions">
             <a class="btn btn-gold" id="result-sms" href="sms:+17186967379">
@@ -217,7 +234,7 @@
             </button>
           </div>
           <p class="result-call">Prefer to call? <a href="tel:+17186967379">(718) 696-7379</a></p>
-          <button class="link-btn" id="result-edit" type="button">Edit my request</button>
+          <button class="link-btn" id="result-edit" type="button">Go back to the form</button>
         </div>
       </div>
     </div>

@@ -94,8 +94,17 @@
   });
 
   /* ---------- Estimate form (Contact page) ---------- */
+  // Requests are emailed through Web3Forms (the form's action). If sending fails,
+  // the same request is offered as a ready-to-send text message instead.
   var form = document.getElementById('estimate-form');
   if (form) {
+    var endpoint = form.getAttribute('action');
+    var sendBtn = document.getElementById('estimate-send');
+    var sendLabel = sendBtn.querySelector('.btn-label');
+    var live = document.getElementById('form-live');
+    var sent = document.getElementById('estimate-sent');
+    var sentTitle = document.getElementById('sent-title');
+    var sentHelp = document.getElementById('sent-help');
     var result = document.getElementById('estimate-result');
     var preview = document.getElementById('result-preview');
     var smsLink = document.getElementById('result-sms');
@@ -109,6 +118,10 @@
       service: document.getElementById('est-service'),
       details: document.getElementById('est-details')
     };
+    var sending = false;
+
+    // Our own checks and messages replace the browser's, which still apply if scripts are off.
+    form.noValidate = true;
 
     var setError = function (input, msg) {
       var err = document.getElementById(input.id + '-error');
@@ -165,6 +178,60 @@
       return lines.join('\n');
     };
 
+    var show = function (panel) {
+      form.hidden = panel !== form;
+      sent.hidden = panel !== sent;
+      result.hidden = panel !== result;
+    };
+    var setSending = function (on) {
+      sending = on;
+      sendBtn.disabled = on;
+      form.classList.toggle('is-sending', on);
+      sendLabel.textContent = on ? 'Sending…' : 'Send my request';
+      live.textContent = on ? 'Sending your request…' : '';
+    };
+    // What arrives in the inbox: a clear subject, then one line per answer.
+    var payload = function () {
+      var name = f.name.value.trim();
+      var email = f.email.value.trim();
+      var details = f.details.value.trim();
+      var data = {
+        access_key: form.elements.access_key.value,
+        subject: 'Estimate request from ' + name + ': ' + f.service.value + ', ' + f.area.value,
+        from_name: 'Konbit Home Services website',
+        'Name': name,
+        'Phone': prettyPhone(phoneDigits(f.phone.value))
+      };
+      if (email) {
+        data['Email'] = email;
+        data.replyto = email;
+      }
+      data['Project location'] = f.area.value;
+      data['Type of work'] = f.service.value;
+      if (details) data['Project details'] = details;
+      data['Best way to reach them'] = contactMethod();
+      return data;
+    };
+    var showSent = function () {
+      var firstName = f.name.value.trim().split(/\s+/)[0];
+      var phone = prettyPhone(phoneDigits(f.phone.value));
+      var method = contactMethod();
+      var how = method === 'Email' ? 'email you at ' + f.email.value.trim()
+        : method === 'Text' ? 'text you at ' + phone
+        : 'call you at ' + phone;
+      sentTitle.textContent = 'Thank you, ' + firstName + '. We got your request.';
+      sentHelp.textContent = 'We’ll ' + how + ' to talk it through and set up your free estimate.';
+      form.reset();
+      show(sent);
+      sentTitle.focus();
+    };
+    var showTextBackup = function (msg) {
+      preview.textContent = msg;
+      smsLink.setAttribute('href', 'sms:' + PHONE_SMS + '?&body=' + encodeURIComponent(msg));
+      show(result);
+      resultTitle.focus();
+    };
+
     // A link like contact.html?service=Tile%20Installation picks that service.
     try {
       var wanted = new URLSearchParams(window.location.search).get('service');
@@ -175,14 +242,36 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (sending) return;
       var first = validate();
       if (first) { first.focus(); return; }
       var msg = compose();
-      preview.textContent = msg;
-      smsLink.setAttribute('href', 'sms:' + PHONE_SMS + '?&body=' + encodeURIComponent(msg));
-      form.hidden = true;
-      result.hidden = false;
-      resultTitle.focus();
+      // The hidden spam trap is only ever ticked by bots: act as if it worked.
+      if (form.elements.botcheck && form.elements.botcheck.checked) { showSent(); return; }
+      if (!window.fetch || navigator.onLine === false) { showTextBackup(msg); return; }
+
+      setSending(true);
+      var controller = typeof AbortController === 'function' ? new AbortController() : null;
+      var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : 0;
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload()),
+        signal: controller ? controller.signal : undefined
+      }).then(function (res) {
+        return res.json().catch(function () { return null; }).then(function (json) {
+          var ok = res.status === 200 && !(json && json.success === false);
+          if (!ok && window.console) console.warn('Estimate request was not sent:', res.status, json && json.message);
+          return ok;
+        });
+      }, function (err) {
+        if (window.console) console.warn('Estimate request was not sent:', err);
+        return false;
+      }).then(function (ok) {
+        clearTimeout(timer);
+        setSending(false);
+        if (ok) showSent(); else showTextBackup(msg);
+      });
     });
     form.addEventListener('input', function (e) {
       if (e.target.getAttribute && e.target.getAttribute('aria-invalid') === 'true') setError(e.target, '');
@@ -192,11 +281,9 @@
       if (e.target.getAttribute && e.target.getAttribute('aria-invalid') === 'true') setError(e.target, '');
     });
     copyBtn.addEventListener('click', function () { copyText(preview.textContent, copyBtn, preview); });
-    document.getElementById('result-edit').addEventListener('click', function () {
-      result.hidden = true;
-      form.hidden = false;
-      f.name.focus();
-    });
+    var backToForm = function () { show(form); f.name.focus(); };
+    document.getElementById('result-edit').addEventListener('click', backToForm);
+    document.getElementById('sent-again').addEventListener('click', backToForm);
   }
 
   /* ---------- Photo viewer (Our Work page) ---------- */
