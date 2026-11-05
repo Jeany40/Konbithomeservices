@@ -560,7 +560,7 @@ ul, ol { margin: 0; padding: 0; }
 }
 /* --fit (set on each title) is the width of its longest word in em, so the word never runs off the screen */
 .page-hero h1 {
-  font-size: min(clamp(2.4rem, .8rem + 5.4vw, 6.25rem), calc((100vw - var(--gutter-l) - var(--gutter-r)) / var(--fit, 9)));
+  font-size: min(clamp(2.4rem, .8rem + 5.4vw, 6.25rem), calc((min(100vw, var(--max)) - var(--gutter-l) - var(--gutter-r)) / var(--fit, 9)));
   font-weight: 600; font-stretch: 115%;
   line-height: .95; letter-spacing: -.02em;
   text-transform: uppercase;
