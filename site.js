@@ -232,7 +232,7 @@
       resultTitle.focus();
     };
 
-    // A link like contact.html?service=Tile%20Installation picks that service.
+    // A link like /contact?service=Tile%20Installation picks that service.
     try {
       var wanted = new URLSearchParams(window.location.search).get('service');
       if (wanted && Array.prototype.some.call(f.service.options, function (o) { return o.value === wanted; })) {
