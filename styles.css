@@ -1118,3 +1118,18 @@ picture { display: contents; }
   .rs-photos { min-height: 380px; }
   .rs-main { position: absolute; inset: 0; height: 100%; aspect-ratio: auto; }
 }
+
+/* A service without project photos yet: its icon on the blueprint grid */
+.svc-art {
+  display: grid; place-items: center; aspect-ratio: 4 / 3; margin: 0;
+  background-color: var(--navy);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  border-radius: var(--radius);
+}
+.svc-art .icon { width: 38%; height: auto; aspect-ratio: 1; color: var(--gold-bright); stroke-width: 1.1; }
+
+/* Nine services: three across on wide screens */
+@media (min-width: 1000px) { .service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
